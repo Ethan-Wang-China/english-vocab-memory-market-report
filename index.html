@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1b1814">
+<title>国内英语单词记忆市场分析报告 · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz@1,6..72&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+<style>
+:root{
+  --paper:#f6f1e7;
+  --paper-2:#fbf7ee;
+  --ink:#211c16;
+  --ink-soft:#4f463a;
+  --ink-faint:#8a7f6e;
+  --line:#e2d8c5;
+  --line-strong:#cdbfa6;
+  --vermilion:#c1352a;
+  --vermilion-deep:#9c2820;
+  --jade:#1f6a5e;
+  --gold:#b07d2a;
+  --cream-card:#fdfaf3;
+  --shadow:0 1px 2px rgba(33,28,22,.04),0 14px 40px -22px rgba(33,28,22,.32);
+  --serif:"Noto Serif SC",serif;
+  --sans:"LXGW WenKai","Noto Sans SC",-apple-system,sans-serif;
+  --latin:"Fraunces",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.85;
+  font-size:16px;
+  letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+/* paper grain + subtle dot grid */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(120,100,70,.06) 1px,transparent 1px);
+  background-size:22px 22px;
+  opacity:.7;
+}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 22px}
+
+/* reading progress */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--vermilion),var(--gold));z-index:100;transition:width .12s linear}
+
+/* ============ COVER ============ */
+.cover{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:46px 0 38px;position:relative}
+.cover .kicker{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--vermilion)}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--vermilion);box-shadow:0 0 0 4px rgba(193,53,42,.13)}
+.cover-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:34px 0}
+.cover h1{font-family:var(--serif);font-weight:900;font-size:clamp(38px,11vw,62px);line-height:1.08;letter-spacing:-.01em}
+.cover h1 .em{color:var(--vermilion);position:relative;display:inline-block}
+.cover h1 .em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;height:9px;background:rgba(193,53,42,.16);z-index:-1;transform:skewX(-12deg)}
+.cover .sub{margin-top:22px;font-size:17px;color:var(--ink-soft);max-width:30ch;line-height:1.8}
+.cover .vert{position:absolute;right:-2px;top:46%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--latin);font-style:italic;font-size:13px;color:var(--ink-faint);letter-spacing:.32em;opacity:.65}
+.cover-foot{display:flex;justify-content:space-between;align-items:flex-end;border-top:1.5px solid var(--ink);padding-top:16px;font-size:12.5px;color:var(--ink-soft)}
+.cover-foot .big{font-family:var(--latin);font-size:34px;font-weight:900;color:var(--ink);line-height:1}
+.scrollhint{align-self:center;font-family:var(--latin);letter-spacing:.2em;font-size:10px;color:var(--ink-faint);text-transform:uppercase;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
+
+/* ============ TOC ============ */
+.toc{margin:14px 0 0;background:var(--cream-card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 8px;box-shadow:var(--shadow)}
+.toc h4{font-family:var(--latin);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--vermilion);margin-bottom:12px}
+.toc a{display:flex;align-items:baseline;gap:12px;text-decoration:none;color:var(--ink);padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.toc a:last-child{border-bottom:0}
+.toc a .n{font-family:var(--latin);font-weight:600;color:var(--vermilion);font-size:13px;min-width:22px}
+.toc a .arrow{margin-left:auto;color:var(--ink-faint);font-family:var(--latin)}
+
+/* ============ SECTION ============ */
+section{padding:56px 0 8px}
+.sec-head{margin-bottom:26px}
+.sec-num{display:inline-flex;align-items:center;gap:12px;font-family:var(--latin);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--vermilion);margin-bottom:14px}
+.sec-num .line{width:30px;height:1.5px;background:var(--vermilion)}
+.sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(27px,7.5vw,38px);line-height:1.15;letter-spacing:-.01em}
+.sec-head .lead{margin-top:14px;font-size:16.5px;color:var(--ink-soft);line-height:1.85}
+
+p{margin:0 0 16px}
+.body p{font-size:16px;color:var(--ink)}
+h3{font-family:var(--serif);font-weight:700;font-size:21px;margin:30px 0 12px;line-height:1.35}
+h3 .tag{font-family:var(--latin);font-style:italic;font-weight:500;font-size:15px;color:var(--vermilion);font-weight:400}
+h4.mini{font-family:var(--serif);font-weight:600;font-size:17px;margin:20px 0 8px;color:var(--ink)}
+strong{font-weight:700;color:var(--ink)}
+em.hl{font-style:normal;background:linear-gradient(transparent 60%,rgba(176,125,42,.28) 0);padding:0 1px}
+a.ref{color:var(--vermilion);text-decoration:none;font-family:var(--latin);font-size:.7em;vertical-align:super;font-weight:600}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.stat{background:var(--cream-card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--vermilion)}
+.stat .v{font-family:var(--latin);font-weight:900;font-size:33px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+.stat .v small{font-size:16px;font-weight:600}
+.stat .l{margin-top:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.stat.j::before{background:var(--jade)}
+.stat.g::before{background:var(--gold)}
+
+/* bar chart */
+.chart{background:var(--cream-card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;margin:24px 0;box-shadow:var(--shadow)}
+.chart .ct{font-family:var(--serif);font-weight:700;font-size:15px;margin-bottom:4px}
+.chart .cs{font-size:12px;color:var(--ink-faint);margin-bottom:18px}
+.bar{margin:14px 0}
+.bar .bl{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px}
+.bar .bl .bn{color:var(--ink)}
+.bar .bl .bv{font-family:var(--latin);font-weight:600;color:var(--vermilion)}
+.track{height:11px;background:#ece3d2;border-radius:6px;overflow:hidden}
+.fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--vermilion-deep),var(--vermilion));width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.fill.j{background:linear-gradient(90deg,#155349,var(--jade))}
+.fill.g{background:linear-gradient(90deg,#8c5f17,var(--gold))}
+.fill.n{background:linear-gradient(90deg,#6b6052,#9a8d78)}
+
+/* forgetting curve svg card */
+.curve-card{background:#231e18;border-radius:16px;padding:22px 18px 16px;margin:24px 0;color:#f3ece0;box-shadow:var(--shadow)}
+.curve-card .ct{font-family:var(--serif);font-weight:700;font-size:15px;color:#fff}
+.curve-card .cs{font-size:12px;color:#b6a98f;margin-bottom:10px}
+.curve-card svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#cdc1ab}
+.legend i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+/* pull quote */
+.pull{margin:30px 0;padding:6px 0 6px 22px;border-left:3px solid var(--vermilion);font-family:"Newsreader",var(--serif);font-style:italic;font-size:21px;line-height:1.55;color:var(--ink)}
+.pull .by{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-faint)}
+
+/* callout */
+.note{background:rgba(176,125,42,.09);border:1px solid rgba(176,125,42,.3);border-radius:14px;padding:16px 18px;margin:22px 0;font-size:14.5px;color:var(--ink-soft)}
+.note b{color:var(--gold)}
+
+/* science principle cards */
+.principle{border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;background:var(--cream-card);box-shadow:var(--shadow);position:relative}
+.principle .pidx{font-family:var(--latin);font-weight:900;font-size:13px;color:#fff;background:var(--jade);width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;position:absolute;top:16px;right:16px}
+.principle h4{font-family:var(--serif);font-weight:700;font-size:18px;margin-bottom:4px;padding-right:40px}
+.principle .en{font-family:var(--latin);font-style:italic;font-size:13px;color:var(--ink-faint);margin-bottom:10px}
+.principle p{font-size:14.5px;margin-bottom:0;color:var(--ink-soft)}
+.principle .app{margin-top:10px;font-size:13.5px;color:var(--ink);padding-top:10px;border-top:1px dashed var(--line)}
+.principle .app b{color:var(--jade)}
+
+/* app profile */
+.app-card{background:var(--cream-card);border:1px solid var(--line);border-radius:18px;margin:22px 0;overflow:hidden;box-shadow:var(--shadow)}
+.app-top{padding:20px 20px 16px;border-left:6px solid var(--ac,var(--vermilion))}
+.app-rank{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.app-rank .r{font-family:var(--latin);font-weight:900;font-size:30px;color:var(--ac,var(--vermilion));line-height:1}
+.app-rank .nm{font-family:var(--serif);font-weight:900;font-size:23px;line-height:1.1}
+.app-rank .en{display:block;font-family:var(--latin);font-style:italic;font-size:12px;color:var(--ink-faint);font-weight:400}
+.app-pos{font-size:14px;color:var(--ink-soft);margin-top:8px}
+.app-pos .pill{display:inline-block;background:rgba(193,53,42,.1);color:var(--vermilion-deep);font-size:11.5px;padding:2px 9px;border-radius:20px;margin:3px 4px 0 0}
+.app-body{padding:4px 20px 20px}
+.app-body .row{display:flex;gap:10px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.app-body .row:last-child{border-bottom:0}
+.app-body .row .k{font-family:var(--serif);font-weight:600;min-width:74px;color:var(--ink);flex-shrink:0}
+.app-body .row .vv{color:var(--ink-soft)}
+.rate{display:inline-flex;gap:3px;vertical-align:middle}
+.rate i{width:8px;height:8px;border-radius:50%;background:var(--line-strong);display:inline-block}
+.rate i.on{background:var(--ac,var(--vermilion))}
+.gap-box{margin-top:14px;background:rgba(193,53,42,.06);border:1px solid rgba(193,53,42,.22);border-radius:12px;padding:14px 15px}
+.gap-box .gt{font-family:var(--serif);font-weight:700;font-size:13.5px;color:var(--vermilion-deep);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.gap-box .gt::before{content:"!";font-family:var(--latin);font-weight:900;background:var(--vermilion);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+.gap-box p{font-size:13.5px;color:var(--ink-soft);margin:0}
+
+/* opportunity cards */
+.opp{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.opp .oi{font-family:var(--latin);font-weight:900;font-size:20px;color:var(--vermilion);flex-shrink:0;width:34px;line-height:1.2}
+.opp h4{font-family:var(--serif);font-weight:700;font-size:17px;margin-bottom:6px}
+.opp p{font-size:14.5px;color:var(--ink-soft);margin:0}
+.opp .sol{margin-top:8px;font-size:13.5px;color:var(--ink);background:rgba(31,106,94,.08);border-radius:10px;padding:9px 12px}
+.opp .sol b{color:var(--jade)}
+
+/* matrix */
+.matrix{margin:24px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.matrix .mrow{display:grid;grid-template-columns:1.2fr 1fr 1fr;font-size:13px}
+.matrix .mrow>div{padding:12px 12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.matrix .mrow>div:last-child{border-right:0}
+.matrix .mrow.h>div{background:var(--ink);color:var(--paper);font-family:var(--serif);font-weight:600;font-size:12.5px}
+.matrix .mrow:last-child>div{border-bottom:0}
+.matrix .mrow .lab{font-family:var(--serif);font-weight:600;color:var(--ink)}
+.tagp{display:inline-block;font-size:11px;padding:1px 7px;border-radius:5px;background:rgba(31,106,94,.12);color:var(--jade);font-weight:600}
+.tagp.hot{background:rgba(193,53,42,.12);color:var(--vermilion-deep)}
+
+/* ===== full app profile ===== */
+.profile{margin:30px 0;border:1px solid var(--line);border-radius:20px;background:var(--cream-card);box-shadow:var(--shadow);overflow:hidden}
+.pf-hero{padding:22px 20px 18px;border-bottom:1px solid var(--line);position:relative;background:linear-gradient(180deg,rgba(0,0,0,.015),transparent)}
+.pf-hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--ac)}
+.pf-rank{display:flex;align-items:center;gap:14px}
+.pf-rank .r{font-family:var(--latin);font-weight:900;font-size:40px;color:var(--ac);line-height:.9}
+.pf-rank .nm{font-family:var(--serif);font-weight:900;font-size:25px;line-height:1.08}
+.pf-rank .en{display:block;font-family:var(--latin);font-style:italic;font-size:12.5px;color:var(--ink-faint);font-weight:400;margin-top:3px}
+.pf-tag{margin-top:13px;font-size:14.5px;color:var(--ink-soft);line-height:1.75}
+.pf-meta{margin-top:10px;font-size:12px;color:var(--ink-faint)}
+.pf-meta b{color:var(--ink-soft)}
+.pf-pills{margin-top:11px}
+.pf-pills .pill{display:inline-block;background:color-mix(in srgb,var(--ac) 12%,transparent);color:var(--ac);font-size:11.5px;padding:3px 10px;border-radius:20px;margin:3px 5px 0 0;font-weight:600}
+
+/* phone mockup */
+.ph-wrap{display:flex;flex-direction:column;align-items:center;padding:24px 20px 6px;background:repeating-linear-gradient(45deg,rgba(80,60,30,.018) 0 11px,transparent 11px 22px)}
+.phone{width:214px;border:8px solid #15120e;border-radius:36px;background:#15120e;box-shadow:0 24px 54px -22px rgba(0,0,0,.55);position:relative}
+.phone::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:56px;height:5px;border-radius:5px;background:#39332a;z-index:3}
+.scr{border-radius:28px;overflow:hidden;background:#fff;height:400px;display:flex;flex-direction:column;font-size:11px;line-height:1.45;position:relative}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:11px 15px 4px;font-size:9px;font-weight:700;color:var(--sc-fg,#222)}
+.sbar .dots{display:flex;gap:3px}.sbar .dots i{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.55}
+.scr .body-s{flex:1;padding:11px 15px;display:flex;flex-direction:column;overflow:hidden}
+.ph-cap{font-size:11px;color:var(--ink-faint);margin-top:13px;text-align:center;font-style:italic;max-width:230px}
+.s-word{font-family:var(--latin);font-weight:900;font-size:25px;letter-spacing:-.01em;line-height:1.1}
+.s-ph{font-size:10px;opacity:.62;margin-top:3px}
+.s-btn{border:1px solid;border-radius:9px;padding:7px 10px;font-size:10.5px;margin-top:7px}
+
+/* dimension blocks */
+.dims{padding:8px 20px 16px}
+.dim{padding:16px 0;border-bottom:1px dashed var(--line);display:flex;gap:13px}
+.dim:last-child{border-bottom:0}
+.dim .ic{width:30px;height:30px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--latin);font-weight:900;font-size:12px;color:#fff;background:var(--ac)}
+.dim .dc{flex:1;min-width:0}
+.dim .dl{font-family:var(--serif);font-weight:700;font-size:15.5px;margin-bottom:5px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.dim .dl .de{font-family:var(--latin);font-style:italic;font-weight:400;font-size:11.5px;color:var(--ink-faint)}
+.dim .dt{font-size:14px;color:var(--ink-soft);line-height:1.78}
+.dim .dt b{color:var(--ink)}
+
+/* pricing tiers */
+.tiers{margin-top:10px;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.tier{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 13px;font-size:13px;border-bottom:1px solid var(--line)}
+.tier:last-child{border-bottom:0}
+.tier .tn{color:var(--ink-soft)}.tier .tn b{color:var(--ink)}
+.tier .tp{font-family:var(--latin);font-weight:600;color:var(--ac);white-space:nowrap;font-size:12.5px}
+.tier.free{background:color-mix(in srgb,var(--ac) 6%,transparent)}
+
+/* strengths / gap */
+.sg{display:grid;grid-template-columns:1fr;gap:11px;padding:2px 20px 22px}
+.sg .box{border-radius:12px;padding:14px 15px;font-size:13.5px;line-height:1.7}
+.sg .good{background:rgba(31,106,94,.08);border:1px solid rgba(31,106,94,.22)}
+.sg .bad{background:rgba(193,53,42,.06);border:1px solid rgba(193,53,42,.22)}
+.sg .bt{font-family:var(--serif);font-weight:700;font-size:13.5px;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.sg .good .bt{color:var(--jade)}.sg .bad .bt{color:var(--vermilion-deep)}
+.sg .bt span{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--latin);font-weight:900;font-size:11px}
+.sg .good .bt span{background:var(--jade)}.sg .bad .bt span{background:var(--vermilion)}
+.sg p{margin:0;color:var(--ink-soft)}
+
+/* footnotes */
+.foot{margin-top:40px;padding:24px 0 60px;border-top:1.5px solid var(--ink)}
+.foot h4{font-family:var(--latin);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+.foot ol{padding-left:20px}
+.foot li{font-size:12.5px;color:var(--ink-faint);margin-bottom:8px;line-height:1.6}
+.disclaimer{font-size:12px;color:var(--ink-faint);font-style:italic;margin-top:18px;line-height:1.7}
+.sign{margin-top:30px;font-family:var(--latin);font-style:italic;color:var(--ink-soft);font-size:14px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:380px){
+  body{font-size:15px}
+  .stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<div class="wrap">
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+  <div class="kicker"><span class="dot"></span>Market Intelligence Report · 行业研究</div>
+  <div class="cover-mid">
+    <h1>国内英语<br><span class="em">单词记忆</span><br>市场分析报告</h1>
+    <p class="sub">从行业格局、记忆科学到产品机会——一份写给产品人、投资人与教育从业者的深度洞察。</p>
+  </div>
+  <div class="vert">Vocabulary · Memory · Motivation</div>
+  <div>
+    <div class="cover-foot">
+      <div>
+        <div class="big">2026</div>
+        <div>移动端阅读版 · 完整版</div>
+      </div>
+      <div style="text-align:right">
+        <div>顾客洞察 × 记忆心理学</div>
+        <div>教育心理学 × 动机设计</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:26px"><span class="scrollhint">向下滑动 ↓ Scroll</span></div>
+  </div>
+</header>
+
+<!-- ===================== TOC ===================== -->
+<nav class="toc rv">
+  <h4>目录 · Contents</h4>
+  <a href="#s1"><span class="n">01</span><span>执行摘要</span><span class="arrow">→</span></a>
+  <a href="#s2"><span class="n">02</span><span>行业现状：规模、用户与格局</span><span class="arrow">→</span></a>
+  <a href="#s3"><span class="n">03</span><span>行业前景：四股增长引擎</span><span class="arrow">→</span></a>
+  <a href="#s4"><span class="n">04</span><span>记单词最前沿的科学方法</span><span class="arrow">→</span></a>
+  <a href="#s5"><span class="n">05</span><span>主流 Top5 App 深度拆解</span><span class="arrow">→</span></a>
+  <a href="#s6"><span class="n">06</span><span>被忽视的市场与破局之道</span><span class="arrow">→</span></a>
+  <a href="#s7"><span class="n">07</span><span>机会矩阵与战略建议</span><span class="arrow">→</span></a>
+  <a href="#s8"><span class="n">08</span><span>数据来源与说明</span><span class="arrow">→</span></a>
+</nav>
+
+<!-- ===================== 01 摘要 ===================== -->
+<section id="s1" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>01 · Executive Summary</div>
+    <h2>执行摘要</h2>
+    <p class="lead">背单词是中国人英语学习中最高频、最刚需、也最痛苦的环节。市场早已被几家头部 App 占据，但「记得住」与「用得出」之间，仍裂着一道没人真正填平的鸿沟。</p>
+  </div>
+
+  <div class="rv">
+    <p>过去十年，中国英语单词记忆赛道完成了从「工具」到「习惯」的进化：百词斩、墨墨、扇贝、不背、知米等产品，凭借<strong>艾宾浩斯间隔重复</strong>与<strong>打卡社交</strong>两大引擎，圈住了以亿计的考试人群。然而当人口红利见顶、双减重塑 K12、留学与考研需求结构性变化，行业正从「拉新竞赛」转入「<em class="hl">留存与价值深耕</em>」的下半场。</p>
+
+    <p>我们的核心判断是：现有产品高度同质化地解决了「<strong>认得</strong>」这一被动词汇问题，却普遍未能解决三件事——长期动机的崩塌、被动词汇向<strong>主动产出</strong>的转化，以及对成人零基础、职场、银发等非应试人群的覆盖。这正是下一代产品的机会带。</p>
+
+    <div class="stats">
+      <div class="stat"><div class="v">3.8<small>亿</small></div><div class="l">中国在线教育用户规模量级，单词记忆为最高频入口之一<a class="ref" href="#f1">1</a></div></div>
+      <div class="stat j"><div class="v">&gt;1<small>亿</small></div><div class="l">头部背单词 App 的累计注册用户量级<a class="ref" href="#f2">2</a></div></div>
+      <div class="stat g"><div class="v">≈90<small>%</small></div><div class="l">用户主要诉求集中于「应试」与「升学」场景<a class="ref" href="#f3">3</a></div></div>
+      <div class="stat"><div class="v">7<small>天</small></div><div class="l">工具类学习 App 常见的次留拐点，长期留存普遍偏弱<a class="ref" href="#f4">4</a></div></div>
+    </div>
+
+    <div class="note"><b>一句话结论：</b>赢家不再是「谁的词库大、谁的算法准」，而是「<strong>谁能让用户在 90 天后还在用，并且真的会用这个词</strong>」。动机设计与产出转化，是被低估的护城河。</div>
+  </div>
+</section>
+
+<!-- ===================== 02 行业现状 ===================== -->
+<section id="s2" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>02 · Industry Landscape</div>
+    <h2>行业现状<br>规模、用户与格局</h2>
+    <p class="lead">一个看似拥挤、实则结构失衡的市场：头部集中、人群单一、商业模式趋同。</p>
+  </div>
+
+  <div class="rv">
+    <h3>2.1 市场规模 <span class="tag">— a high-frequency, low-monetization category</span></h3>
+    <p>背单词处在一个「<strong>极高频、极刚需，但单点付费意愿偏低</strong>」的特殊象限。它是中国英语学习者使用频率最高的功能模块之一——几乎覆盖小学到考研、考博、出国的全链路。在线教育大盘约 3.8 亿用户规模的背景下<a class="ref" href="#f1">1</a>，背单词作为「入口型」高频应用，沉淀了数亿级的累计用户，但人均年付费往往只有数十元量级，变现高度依赖会员、词书与向大课的导流。</p>
+
+    <div class="chart">
+      <div class="ct">需求场景分布（按用户主诉求估算）</div>
+      <div class="cs">来源：综合公开行业调研与应用商店评论结构 · 估算<a class="ref" href="#f3">3</a></div>
+      <div class="bar"><div class="bl"><span class="bn">四六级 / 考研 / 考博</span><span class="bv">~46%</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">K12 中高考</span><span class="bv">~24%</span></div><div class="track"><div class="fill" data-w="48"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">出国留学 (雅思托福 GRE)</span><span class="bv">~16%</span></div><div class="track"><div class="fill j" data-w="32"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">职场 / 兴趣 / 终身学习</span><span class="bv">~14%</span></div><div class="track"><div class="fill g" data-w="28"></div></div></div>
+    </div>
+
+    <h3>2.2 用户画像 <span class="tag">— who is really memorizing?</span></h3>
+    <p>从顾客洞察视角看，当前用户高度集中在<strong>「有明确考试 deadline 的年轻人」</strong>。他们的共同心理特征是：<em class="hl">焦虑驱动、短期目标导向、自律资源稀缺</em>。这解释了为什么「打卡」「排行榜」「学习时长」这类外部动机机制如此奏效——它们替代了学习者自己难以维持的内在驱动。</p>
+    <p>但这也埋下了行业的结构性隐患：当考试结束，<strong>外部动机随之消失，留存断崖式下跌</strong>。一个庞大却被忽略的群体——成人零基础学习者、职场进阶者、为子女陪读的家长、退休后想圆英语梦的银发族——则因为现有产品「太应试、太硬核」而长期得不到合适的产品。</p>
+
+    <div class="pull">现有产品擅长服务「被 deadline 追着跑的人」，却几乎不会服务「没有 deadline、只想慢慢学好」的人。
+      <span class="by">— 用户分层洞察</span></div>
+
+    <h3>2.3 竞争格局 <span class="tag">— consolidated yet undifferentiated</span></h3>
+    <p>赛道呈现典型的<strong>「头部集中 + 中部同质」</strong>格局：百词斩、墨墨背单词、扇贝单词、不背单词、知米背单词构成第一梯队，各自占据一种记忆「人设」（图像、算法、社区、语境、词根）。然而剥开外壳，五家的底层逻辑高度相似——都建立在<em class="hl">间隔重复 + 例句 + 测验</em>之上。真正的差异，更多体现在品牌调性与内容运营，而非记忆科学的代际差距。</p>
+
+    <div class="note"><b>格局洞察：</b>过去的胜负手是「词库覆盖度」与「算法精细度」，现已逼近边际收益递减。下一个胜负手正在转向 <b>AI 个性化</b> 与 <b>产出能力</b>——这恰恰是头部们尚未真正拉开身位的新战场。</div>
+  </div>
+</section>
+
+<!-- ===================== 03 前景 ===================== -->
+<section id="s3" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>03 · Outlook</div>
+    <h2>行业前景<br>四股增长引擎</h2>
+    <p class="lead">人口红利退潮，但需求并未消失——它在迁移、升级、并被 AI 重新定价。</p>
+  </div>
+
+  <div class="rv">
+    <div class="principle" style="border-left:4px solid var(--vermilion)">
+      <h4>引擎一：AI 让「真正的个性化」第一次可行</h4>
+      <p>大模型把过去成本高昂的「一对一私教」边际成本压到接近于零。动态生成例句、按你的错误模式实时调整难度、用你感兴趣的话题造句、即时纠正口语与写作——这是间隔重复算法之后，记忆赛道的<strong>第二次技术代差</strong>，也是重排座次的最大变量。</p>
+    </div>
+    <div class="principle" style="border-left:4px solid var(--jade)">
+      <h4>引擎二：终身学习与「悦己型」需求崛起</h4>
+      <p>双减之后，K12 应试红利收缩，但成人「自我投资」「悦己学习」需求上行。职场英语、兴趣英语、陪娃英语、银发英语构成一片<strong>低竞争、高情感黏性</strong>的蓝海。这类用户不为考试，为「成为更好的自己」——动机更脆弱，但一旦被满足，付费意愿与忠诚度反而更高。</p>
+    </div>
+    <div class="principle" style="border-left:4px solid var(--gold)">
+      <h4>引擎三：出国与国际化需求结构性回暖</h4>
+      <p>留学、外企、跨境电商、出海创业带动雅思托福 GRE、商务与垂直行业词汇的持续需求。这部分用户客单价高、付费意愿强，是变现质量最优的细分。</p>
+    </div>
+    <div class="principle" style="border-left:4px solid var(--ink-soft)">
+      <h4>引擎四：内容化与游戏化重构「使用时长」</h4>
+      <p>短视频与游戏重塑了国民注意力。背单词正从「任务」向「内容消费」演化——剧情化、可听可看、社交可晒。谁能把「记单词」做成用户<strong>愿意主动打开、而非被打卡逼着打开</strong>的体验，谁就赢得时长之战。</p>
+    </div>
+
+    <div class="chart">
+      <div class="ct">各细分赛道机会评分（综合增速 × 竞争烈度 × 付费质量）</div>
+      <div class="cs">分值越高代表机会窗口越大 · 研究估算</div>
+      <div class="bar"><div class="bl"><span class="bn">AI 个性化背词</span><span class="bv">9.2</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">成人 / 职场英语</span><span class="bv">8.1</span></div><div class="track"><div class="fill j" data-w="81"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">留学 / 高端备考</span><span class="bv">7.4</span></div><div class="track"><div class="fill g" data-w="74"></div></div></div>
+      <div class="bar"><div class="bl"><span class="bn">K12 应试（存量博弈）</span><span class="bv">5.0</span></div><div class="track"><div class="fill n" data-w="50"></div></div></div>
+    </div>
+
+    <div class="pull">未来五年，行业不会死于需求消失，只会死于「用十年前的产品逻辑，服务被 AI 重新喂养过期待的用户」。
+      <span class="by">— 前景判断</span></div>
+  </div>
+</section>
+
+<!-- ===================== 04 科学方法 ===================== -->
+<section id="s4" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>04 · The Science</div>
+    <h2>记单词最前沿的<br>科学方法</h2>
+    <p class="lead">单词记不住，从来不是「不够努力」，而是「方法违背大脑」。这是被认知科学反复验证的八条原理。</p>
+  </div>
+
+  <div class="rv">
+    <div class="curve-card">
+      <div class="ct">遗忘曲线 vs 间隔重复</div>
+      <div class="cs">每一次「即将遗忘时的复习」，都让记忆衰减得更慢、留存得更久</div>
+      <svg viewBox="0 0 400 210" aria-label="遗忘曲线与间隔重复对比图">
+        <defs>
+          <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c1352a" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#c1352a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- axes -->
+        <line x1="38" y1="20" x2="38" y2="170" stroke="#5a5040" stroke-width="1"/>
+        <line x1="38" y1="170" x2="384" y2="170" stroke="#5a5040" stroke-width="1"/>
+        <text x="30" y="28" fill="#9a8d78" font-size="9" text-anchor="end">记忆留存</text>
+        <text x="384" y="184" fill="#9a8d78" font-size="9" text-anchor="end">时间 →</text>
+        <!-- natural forgetting -->
+        <path d="M38,30 C70,120 120,150 384,162" fill="none" stroke="#9a8d78" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="250" y="150" fill="#b6a98f" font-size="9">自然遗忘</text>
+        <!-- spaced repetition sawtooth -->
+        <path d="M38,30 C58,70 72,80 90,84 L90,34 C120,58 140,66 170,70 L170,36 C210,52 240,58 280,60 L280,40 C320,48 350,50 384,52"
+              fill="none" stroke="#e8a23a" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- review markers -->
+        <circle cx="90" cy="34" r="3.5" fill="#c1352a"/>
+        <circle cx="170" cy="36" r="3.5" fill="#c1352a"/>
+        <circle cx="280" cy="40" r="3.5" fill="#c1352a"/>
+        <text x="90" y="24" fill="#f3ece0" font-size="8" text-anchor="middle">复习1</text>
+        <text x="170" y="26" fill="#f3ece0" font-size="8" text-anchor="middle">复习2</text>
+        <text x="280" y="30" fill="#f3ece0" font-size="8" text-anchor="middle">复习3</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#9a8d78"></i>不复习的自然遗忘</span>
+        <span><i style="background:#e8a23a"></i>间隔重复后的留存</span>
+        <span><i style="background:#c1352a"></i>最佳复习时点</span>
+      </div>
+    </div>
+
+    <p>下面八条原理，构成现代单词记忆的「科学骨架」。优秀的产品不是堆砌功能，而是<strong>把这些原理悄悄编织进每一次交互</strong>。</p>
+
+    <div class="principle">
+      <span class="pidx">01</span>
+      <h4>间隔重复</h4>
+      <div class="en">Spaced Repetition · Ebbinghaus → SM-2 → FSRS</div>
+      <p>记忆在「即将遗忘的临界点」复习，留存效率最高。从艾宾浩斯遗忘曲线，到 Anki 的 SM-2 算法，再到今天基于机器学习的 <strong>FSRS</strong>（Free Spaced Repetition Scheduler），调度精度不断提升——它能根据你每张卡的真实回忆表现，预测你的遗忘概率并精准安排下一次复习。<a class="ref" href="#f5">5</a></p>
+      <div class="app"><b>产品化：</b>不再用固定的「1-2-4-7 天」死板间隔，而是每张卡片个性化、自适应调度。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">02</span>
+      <h4>主动回忆 / 检索练习</h4>
+      <div class="en">Active Recall · The Testing Effect</div>
+      <p>「重读」是被动的，「努力回想」才是记忆。检索练习（Retrieval Practice）显示：考自己一次，比再看十遍效果更好——提取记忆的行为本身，会强化神经通路。<a class="ref" href="#f6">6</a></p>
+      <div class="app"><b>产品化：</b>先让用户「盲猜词义」再揭晓，而非直接展示；用拼写、选义、听写制造主动提取。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">03</span>
+      <h4>合意困难</h4>
+      <div class="en">Desirable Difficulties · Robert Bjork</div>
+      <p>学习时「适度的费力」反而提升长期记忆——太容易记得快、忘得也快。让大脑稍微挣扎一下（延迟提示、混淆项、提高提取难度），才是高质量学习。<a class="ref" href="#f7">7</a></p>
+      <div class="app"><b>产品化：</b>难度动态贴合用户能力边缘；警惕「看着很爽却没学到」的虚假流畅感。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">04</span>
+      <h4>双重编码</h4>
+      <div class="en">Dual Coding Theory · Allan Paivio</div>
+      <p>语言信息 + 视觉图像双通道编码，记忆痕迹更深。一个词配上鲜明、甚至略带荒诞的画面，会形成更牢固、更易提取的记忆钩子——这正是「图像记单词」的科学根基。<a class="ref" href="#f8">8</a></p>
+      <div class="app"><b>产品化：</b>词义可视化、AI 生成情境画面、谐音/联想助记，但需避免「图记住了、词没记住」。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">05</span>
+      <h4>语境中习得</h4>
+      <div class="en">Contextual Learning · Comprehensible Input (Krashen)</div>
+      <p>孤立的「单词—中文」配对，记的是<strong>翻译</strong>而非<strong>语言</strong>。在可理解的真实语境（句子、对话、文章、影音）中遇到单词，才能建立其用法、搭配、语感。<a class="ref" href="#f9">9</a></p>
+      <div class="app"><b>产品化：</b>真实语料例句、影视片段、可理解的分级阅读，让单词「活」在语境里。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">06</span>
+      <h4>交错练习</h4>
+      <div class="en">Interleaving</div>
+      <p>把不同主题、易混词混合穿插练习，比「一类学到底」（block practice）更能提升辨别与长期保持——它逼迫大脑每次都重新判断、提取，对抗惯性。<a class="ref" href="#f7">7</a></p>
+      <div class="app"><b>产品化：</b>主动把形近词、近义词混排出题，训练「区分」能力而非「眼熟」。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">07</span>
+      <h4>精细加工与构词法</h4>
+      <div class="en">Elaborative Encoding · Morphology</div>
+      <p>把新词与已有知识深度关联——词根词缀、词源故事、自我相关化（用它造一句关于自己的话）——记得越「深」，提取越易。理解 <em>bene-（好）</em> 就能批量拿下 benefit、benevolent、benediction。<a class="ref" href="#f6">6</a></p>
+      <div class="app"><b>产品化：</b>词根词缀网络、词族联想、引导用户「用自己的话/经历」复述词义。</div>
+    </div>
+
+    <div class="principle">
+      <span class="pidx">08</span>
+      <h4>动机、情绪与元认知</h4>
+      <div class="en">Motivation (SDT) · Emotion · Metacognition</div>
+      <p>记忆不只是认知问题，更是<strong>动机问题</strong>。自我决定理论（SDT）指出，<em class="hl">自主感、胜任感、归属感</em>三者满足时，内在动机才能持久。情绪能强化记忆编码；而元认知（知道自己「真的会了没」）则决定学习者能否自我纠偏。<a class="ref" href="#f10">10</a></p>
+      <div class="app"><b>产品化：</b>给「掌控感」而非「被监督感」；用进度可视化喂养胜任感；用社群供给归属感；用诚实的掌握度反馈喂养元认知。</div>
+    </div>
+
+    <div class="note"><b>关键差距：</b>当前主流产品普遍做透了原理 1（间隔重复）与原理 2（测验），部分做了 4（图像）与 5（语境）；而原理 <b>3、6、7、8</b>——尤其是<b>动机的内在化</b>与<b>元认知反馈</b>——仍是巨大的产品空白。这是第六章机会的科学依据。</div>
+  </div>
+</section>
+
+<!-- ===================== 05 Top5 App ===================== -->
+<section id="s5" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>05 · Top 5 Deep Dive</div>
+    <h2>主流 Top5 App<br>深度拆解</h2>
+    <p class="lead">五款产品，五种记忆「人设」。下面从<strong>战略定位、学习策略、复习策略、目标人群、收费方式</strong>五大维度全方位拆解，并附核心界面示意图，逐一点出各自<strong>尚未满足好</strong>的市场。</p>
+    <div class="note" style="margin-top:18px"><b>关于界面图：</b>下文每款产品的手机示意图为<b>依据公开产品形态绘制的还原示意</b>，用于说明其核心交互机制，<b>非官方截图</b>，不含任何受版权保护的原始素材。<a class="ref" href="#f13">13</a></div>
+  </div>
+
+  <!-- 百词斩 -->
+  <div class="profile rv" style="--ac:#c1352a">
+    <div class="pf-hero">
+      <div class="pf-rank"><span class="r">01</span><span class="nm">百词斩<span class="en">Baicizhan · 图像记忆派</span></span></div>
+      <div class="pf-tag">「一图记一词」的开创者，把双重编码理论做成了国民级大众产品。以趣味配图 + 真人朗读例句把抽象单词「画」进脑子，是视觉型学习者与中学生的入门首选。</div>
+      <div class="pf-meta">出品方：<b>成都超有爱科技</b> · 上线：2011 年 · 定位：轻量趣味背词<a class="ref" href="#f11">11</a></div>
+      <div class="pf-pills"><span class="pill">图像联想</span><span class="pill">四六级 / K12</span><span class="pill">趣味轻量</span><span class="pill">真人例句</span></div>
+    </div>
+
+    <div class="ph-wrap">
+      <div class="phone"><div class="scr" style="--sc-fg:#fff">
+        <div style="background:linear-gradient(135deg,#d8483a,#b0241a)">
+          <div class="sbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div style="padding:0 15px 9px;color:#ffe;font-size:10px;opacity:.92">四级核心词 · 第 12 / 800</div>
+        </div>
+        <div class="body-s">
+          <div style="height:92px;border-radius:12px;background:linear-gradient(135deg,#ffd28a,#ff9b6b);display:flex;align-items:center;justify-content:center;font-size:24px">🏞️</div>
+          <div style="text-align:center;margin-top:9px"><div class="s-word" style="color:#222">abandon</div><div class="s-ph" style="color:#555">/əˈbændən/</div></div>
+          <div style="margin-top:4px">
+            <div class="s-btn" style="border-color:#e3d9c8;color:#333">A · 安排，布置</div>
+            <div class="s-btn" style="border-color:#c1352a;background:#fdeceb;color:#c1352a;font-weight:700">B · 放弃；抛弃 ✓</div>
+            <div class="s-btn" style="border-color:#e3d9c8;color:#333">C · 庆祝，欢庆</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="ph-cap">示意界面：图卡 + 多义辨析选择题（非官方截图，仅作机制示意）</div>
+    </div>
+
+    <div class="dims">
+      <div class="dim"><div class="ic">战</div><div class="dc"><div class="dl">战略定位 <span class="de">Strategy</span></div><div class="dt">以「<b>趣味化降低门槛</b>」抢占大众与低龄入口，用免费高频背词沉淀海量用户，再向<b>训练营、直播大课、纸质图书</b>等高客单业务导流——典型的「工具引流 + 教育变现」漏斗。</div></div></div>
+      <div class="dim"><div class="ic">学</div><div class="dc"><div class="dl">学习策略 <span class="de">Learning</span></div><div class="dt">双重编码为核心：每词配一张情境/谐音图片，叠加真人朗读例句与词义辨析，把「认词」做得轻松有趣，<b>视觉记忆钩子强</b>。</div></div></div>
+      <div class="dim"><div class="ic">复</div><div class="dc"><div class="dl">复习策略 <span class="de">Review</span></div><div class="dt">基于艾宾浩斯的<b>间隔重复</b>安排「今日复习」，以选择题快速过卡为主，节奏轻快；但复习颗粒度与个性化弱于墨墨。</div></div></div>
+      <div class="dim"><div class="ic">群</div><div class="dc"><div class="dl">目标人群 <span class="de">Audience</span></div><div class="dt">中学生、大学生、四六级考生，以及<b>怕枯燥的视觉型 / 入门型学习者</b>；低龄与泛人群覆盖行业最广。</div></div></div>
+      <div class="dim"><div class="ic">¥</div><div class="dc"><div class="dl">收费方式 <span class="de">Pricing</span></div>
+        <div class="dt">免费可用核心背词，会员去广告并解锁离线/数据，另有词书与课程单独售卖。</div>
+        <div class="tiers">
+          <div class="tier free"><span class="tn"><b>免费版</b> 核心背词 / 配图例句</span><span class="tp">¥0</span></div>
+          <div class="tier"><span class="tn">超级会员（去广告·离线·数据）</span><span class="tp">约 ¥25/月 · ¥168/年</span></div>
+          <div class="tier"><span class="tn">训练营 / 直播课 / 图书</span><span class="tp">单独付费</span></div>
+        </div>
+        <div class="dt" style="font-size:11.5px;margin-top:6px;color:var(--ink-faint)">价格为公开量级，以 App 内实时标价为准。<a class="ref" href="#f12">12</a></div>
+      </div></div>
+      <div class="dim"><div class="ic">⛁</div><div class="dc"><div class="dl">科学落点 <span class="de">Evidence</span></div><div class="dt" style="display:flex;flex-wrap:wrap;gap:6px 16px">双重编码 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span> 主动回忆 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 语境习得 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 主动产出 <span class="rate"><i class="on"></i><i></i><i></i><i></i><i></i></span></div></div></div>
+    </div>
+
+    <div class="sg">
+      <div class="box good"><div class="bt"><span>✓</span>核心优势</div><p>趣味性与上手门槛行业最低，配图记忆钩子强；品牌与内容运营成熟，泛人群覆盖广，是「背词启蒙」的国民入口。</p></div>
+      <div class="box bad"><div class="bt"><span>!</span>未满足好的市场</div><p>图像易造成「<b>记住了图、记不住词</b>」的依赖；选择题为主导致<b>主动产出极弱</b>（不会拼、不会用）。对考研/留学硬核用户偏轻，对成人职场、口语输出几乎无供给。</p></div>
+    </div>
+  </div>
+
+  <!-- 墨墨 -->
+  <div class="profile rv" style="--ac:#1f6a5e">
+    <div class="pf-hero">
+      <div class="pf-rank"><span class="r">02</span><span class="nm">墨墨背单词<span class="en">MaiMemo · 记忆算法派</span></span></div>
+      <div class="pf-tag">「算法控」的信仰之选。以自适应记忆算法与极简界面，把「在最该复习的那一刻复习」做到头部口碑天花板，是考研党与效率主义者的硬核工具。</div>
+      <div class="pf-meta">出品方：<b>墨墨科技（MaiMemo）</b> · 定位：算法驱动的高效复习<a class="ref" href="#f11">11</a></div>
+      <div class="pf-pills"><span class="pill">自适应算法</span><span class="pill">考研硬核</span><span class="pill">极简纯粹</span><span class="pill">遗忘曲线</span></div>
+    </div>
+
+    <div class="ph-wrap">
+      <div class="phone"><div class="scr" style="--sc-fg:#1f6a5e;background:#fbfdfc">
+        <div class="sbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="body-s" style="align-items:center;text-align:center">
+          <div style="font-size:9px;color:#7d9089;width:100%;display:flex;justify-content:space-between"><span>记忆量</span><span>4,260 / 8,000</span></div>
+          <div style="width:100%;height:5px;background:#e7efec;border-radius:3px;margin-top:5px"><div style="width:53%;height:100%;background:#1f6a5e;border-radius:3px"></div></div>
+          <div class="s-word" style="margin-top:30px;color:#173b34">acquisition</div>
+          <div class="s-ph" style="color:#5a7a72">/ˌækwɪˈzɪʃn/ &nbsp;n. 获得；收购</div>
+          <svg viewBox="0 0 150 52" style="width:100%;margin-top:18px">
+            <line x1="6" y1="44" x2="144" y2="44" stroke="#dceae5" stroke-width="1"/>
+            <path d="M6,10 C26,34 44,40 70,42 L70,12 C96,30 118,36 144,38" fill="none" stroke="#1f6a5e" stroke-width="2"/>
+            <circle cx="70" cy="12" r="3" fill="#c1352a"/>
+          </svg>
+          <div style="font-size:9px;color:#7d9089;margin-top:2px">预测下次复习：2 天后</div>
+          <div style="display:flex;gap:7px;margin-top:16px;width:100%">
+            <div class="s-btn" style="flex:1;border-color:#cfe3dd;color:#1f6a5e;text-align:center;margin:0">模糊</div>
+            <div class="s-btn" style="flex:1;border-color:#1f6a5e;background:#1f6a5e;color:#fff;text-align:center;margin:0">认识</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="ph-cap">示意界面：极简卡片 + 记忆量进度 + 个性化遗忘曲线（非官方截图）</div>
+    </div>
+
+    <div class="dims">
+      <div class="dim"><div class="ic">战</div><div class="dc"><div class="dl">战略定位 <span class="de">Strategy</span></div><div class="dt">不做花哨内容，<b>把单点（复习调度）做到极致</b>，靠口碑（尤其考研社群）自然增长；以「记忆量计费」这一独特模型，实现工具型产品的稳定变现。</div></div></div>
+      <div class="dim"><div class="ic">学</div><div class="dc"><div class="dl">学习策略 <span class="de">Learning</span></div><div class="dt">学习侧相对克制：单词 + 释义 + 例句卡片，强调<b>纯粹高效</b>，把认知资源集中在记忆本身，而非趣味包装。</div></div></div>
+      <div class="dim"><div class="ic">复</div><div class="dc"><div class="dl">复习策略 <span class="de">Review</span></div><div class="dt">王牌所在：<b>自适应间隔重复算法</b>，依据每张卡的真实回忆表现，为每个用户、每个词<b>单独预测遗忘时点</b>并精准排程，再以遗忘曲线可视化反馈。</div></div></div>
+      <div class="dim"><div class="ic">群</div><div class="dc"><div class="dl">目标人群 <span class="de">Audience</span></div><div class="dt"><b>考研 / 考博等大词量、强自律</b>的应试者，以及认同「算法即效率」的工具控；不太适合需要外部激励的拖延型用户。</div></div></div>
+      <div class="dim"><div class="ic">¥</div><div class="dc"><div class="dl">收费方式 <span class="de">Pricing</span></div>
+        <div class="dt">独特的「<b>记忆量上限</b>」模型：免费有基础额度，付费<b>一次性永久</b>提升可记忆单词上限（按词量阶梯计价），另有会员解锁高级功能。</div>
+        <div class="tiers">
+          <div class="tier free"><span class="tn"><b>免费</b> 基础记忆量额度</span><span class="tp">¥0</span></div>
+          <div class="tier"><span class="tn">记忆量加量包（永久 · 阶梯计价）</span><span class="tp">约 ¥几十–¥三百</span></div>
+          <div class="tier"><span class="tn">墨墨会员 Pro（高级功能）</span><span class="tp">约 ¥98/年</span></div>
+        </div>
+        <div class="dt" style="font-size:11.5px;margin-top:6px;color:var(--ink-faint)">计费随版本调整，以 App 内为准。<a class="ref" href="#f12">12</a></div>
+      </div></div>
+      <div class="dim"><div class="ic">⛁</div><div class="dc"><div class="dl">科学落点 <span class="de">Evidence</span></div><div class="dt" style="display:flex;flex-wrap:wrap;gap:6px 16px">间隔重复 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span> 主动回忆 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 元认知反馈 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 语境/产出 <span class="rate"><i class="on"></i><i></i><i></i><i></i><i></i></span></div></div></div>
+    </div>
+
+    <div class="sg">
+      <div class="box good"><div class="bt"><span>✓</span>核心优势</div><p>复习算法行业标杆，效率与可信度高；界面极简、零干扰，遗忘曲线可视化喂养元认知，重度用户黏性极强。</p></div>
+      <div class="box bad"><div class="bt"><span>!</span>未满足好的市场</div><p>体验偏「<b>苦修</b>」——高效但枯燥，对内驱弱的用户不友好；强记忆、弱语境与产出；对零基础与非应试人群门槛高；「记忆量收费」易引发付费焦虑。</p></div>
+    </div>
+  </div>
+
+  <!-- 扇贝 -->
+  <div class="profile rv" style="--ac:#b07d2a">
+    <div class="pf-hero">
+      <div class="pf-rank"><span class="r">03</span><span class="nm">扇贝单词<span class="en">Shanbay · 习惯社区派</span></span></div>
+      <div class="pf-tag">「打卡习惯」的集大成者。用打卡、小组、排行与契约机制把「坚持」社交化，并延展出阅读、听力、口语矩阵，主打「养成可持续的学习习惯」。</div>
+      <div class="pf-meta">出品方：<b>南京贝湾教育科技</b> · 定位：习惯养成 + 学习生态<a class="ref" href="#f11">11</a></div>
+      <div class="pf-pills"><span class="pill">打卡社区</span><span class="pill">习惯养成</span><span class="pill">产品矩阵</span><span class="pill">小组排行</span></div>
+    </div>
+
+    <div class="ph-wrap">
+      <div class="phone"><div class="scr" style="--sc-fg:#7a5618;background:#fffdf6">
+        <div class="sbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="body-s">
+          <div style="text-align:center"><div style="font-family:var(--latin);font-weight:900;font-size:34px;color:#b07d2a;line-height:1">217</div><div style="font-size:9px;color:#9a8458">连续打卡天数 🔥</div></div>
+          <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:12px"><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#e6c884"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#e6c884"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#e6c884"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#cd942f"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i><i style="height:9px;border-radius:2px;background:#f0e4c8"></i></div>
+          <div style="font-size:10px;font-weight:700;color:#5a4a2a;margin-top:14px">本周小组排行</div>
+          <div style="font-size:10px;color:#5a4a2a;margin-top:2px">
+            <div style="display:flex;justify-content:space-between;padding:5px 4px;border-bottom:1px solid #f0e8d6"><span>🥇 林同学</span><span>1,240 词</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 4px;border-bottom:1px solid #f0e8d6;background:#fdf3dd;font-weight:700;border-radius:5px"><span>🥈 你</span><span>980 词</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 4px"><span>🥉 Coco</span><span>910 词</span></div>
+          </div>
+          <div class="s-btn" style="border-color:#b07d2a;background:#b07d2a;color:#fff;text-align:center;font-weight:700;margin-top:14px">立即打卡 · +20 词</div>
+        </div>
+      </div></div>
+      <div class="ph-cap">示意界面：连续打卡 + 小组排行 + 契约式坚持（非官方截图）</div>
+    </div>
+
+    <div class="dims">
+      <div class="dim"><div class="ic">战</div><div class="dc"><div class="dl">战略定位 <span class="de">Strategy</span></div><div class="dt">以<b>社交化坚持</b>解决「学不下去」的根本痛点，用单词作流量入口，横向扩张为阅读/听力/口语<b>学习生态</b>，提升 LTV 与交叉付费。</div></div></div>
+      <div class="dim"><div class="ic">学</div><div class="dc"><div class="dl">学习策略 <span class="de">Learning</span></div><div class="dt">单词 + 例句 + 多形态测验，学习内容中规中矩；真正差异在<b>外层激励包装</b>——把学习变成可晒、可比、可结伴的社交行为。</div></div></div>
+      <div class="dim"><div class="ic">复</div><div class="dc"><div class="dl">复习策略 <span class="de">Review</span></div><div class="dt">间隔重复 + <b>每日打卡驱动复习节律</b>：用「连续天数」「断签代价」「小组监督」制造强外部动机，保证日活与复习频次。</div></div></div>
+      <div class="dim"><div class="ic">群</div><div class="dc"><div class="dl">目标人群 <span class="de">Audience</span></div><div class="dt"><b>自律困难、需要外部督促</b>的四六级与泛学习人群；喜欢结伴、打卡、社群氛围的用户。</div></div></div>
+      <div class="dim"><div class="ic">¥</div><div class="dc"><div class="dl">收费方式 <span class="de">Pricing</span></div>
+        <div class="dt">免费基础背词，会员打通多产品权益，另售课程/训练营；历史上以「打卡返学费」做增长营销。</div>
+        <div class="tiers">
+          <div class="tier free"><span class="tn"><b>免费</b> 基础背词 + 社区</span><span class="tp">¥0</span></div>
+          <div class="tier"><span class="tn">会员（多产品权益）</span><span class="tp">约 ¥98/年</span></div>
+          <div class="tier"><span class="tn">系统课 / 训练营</span><span class="tp">数百–数千</span></div>
+        </div>
+        <div class="dt" style="font-size:11.5px;margin-top:6px;color:var(--ink-faint)">价格为公开量级，以 App 内为准。<a class="ref" href="#f12">12</a></div>
+      </div></div>
+      <div class="dim"><div class="ic">⛁</div><div class="dc"><div class="dl">科学落点 <span class="de">Evidence</span></div><div class="dt" style="display:flex;flex-wrap:wrap;gap:6px 16px">外在动机 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 归属感 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 内在动机 <span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> 主动产出 <span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></div></div>
+    </div>
+
+    <div class="sg">
+      <div class="box good"><div class="bt"><span>✓</span>核心优势</div><p>习惯养成与社区氛围行业领先，有效解决「坚持」难题；多产品矩阵拉长用户生命周期、拓宽变现。</p></div>
+      <div class="box bad"><div class="bt"><span>!</span>未满足好的市场</div><p>过度依赖<b>外部动机</b>，目标达成或断签后留存易崩，甚至可能<b>挤出内在兴趣</b>；产品线虽广却分散，单词与产出能力的纵深不足。</p></div>
+    </div>
+  </div>
+
+  <!-- 不背 -->
+  <div class="profile rv" style="--ac:#3a6ea5">
+    <div class="pf-hero">
+      <div class="pf-rank"><span class="r">04</span><span class="nm">不背单词<span class="en">Bubei · 真实语境派</span></span></div>
+      <div class="pf-tag">「语境信仰」的代表作。以海量真实例句、原声影音与精致美学打动文艺向用户，主张「在真实语境里自然记住，而不是孤立死背」。</div>
+      <div class="pf-meta">出品方：<b>不背单词团队（成都）</b> · 定位：语境沉浸 + 美学体验<a class="ref" href="#f11">11</a></div>
+      <div class="pf-pills"><span class="pill">真实语料</span><span class="pill">原声影音</span><span class="pill">高颜值</span><span class="pill">语感沉浸</span></div>
+    </div>
+
+    <div class="ph-wrap">
+      <div class="phone"><div class="scr" style="--sc-fg:#cdd6e2;background:#11151d;color:#e8edf4">
+        <div class="sbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="body-s">
+          <div class="s-word" style="color:#fff">nostalgia</div>
+          <div class="s-ph" style="color:#8ea0b8">/nɒˈstældʒə/ &nbsp;n. 怀旧；乡愁</div>
+          <div style="font-size:12px;line-height:1.85;color:#c9d4e2;margin-top:16px">A wave of <span style="color:#7fb0ff;border-bottom:1px solid #7fb0ff">nostalgia</span> washed over him as the old song began to play.</div>
+          <div style="font-size:9px;color:#6f829b;margin-top:8px">—— 原声例句 · 影视语料库</div>
+          <div style="display:flex;align-items:flex-end;gap:2px;height:30px;margin-top:20px"><i style="flex:1;height:8px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:15px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:22px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:11px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:26px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:18px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:9px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:24px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:30px;background:#5a90d0;border-radius:1px"></i><i style="flex:1;height:14px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:20px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:12px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:27px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:10px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:19px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:23px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:13px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:21px;background:#3a6ea5;border-radius:1px"></i><i style="flex:1;height:9px;background:#4a7fbf;border-radius:1px"></i><i style="flex:1;height:16px;background:#3a6ea5;border-radius:1px"></i></div>
+          <div class="s-btn" style="border-color:#3a6ea5;color:#9cc1ff;text-align:center;margin-top:16px">▶ 播放原声例句</div>
+        </div>
+      </div></div>
+      <div class="ph-cap">示意界面：真实语境例句 + 原声波形播放（非官方截图）</div>
+    </div>
+
+    <div class="dims">
+      <div class="dim"><div class="ic">战</div><div class="dc"><div class="dl">战略定位 <span class="de">Strategy</span></div><div class="dt">以「<b>质感 + 语境</b>」做差异化，吸引审美与语感敏感的中高端用户，靠口碑与设计溢价获客，营销克制，走「小而美」精品路线。</div></div></div>
+      <div class="dim"><div class="ic">学</div><div class="dc"><div class="dl">学习策略 <span class="de">Learning</span></div><div class="dt">核心是<b>真实语料</b>：同一个词配大量真实例句、原声与影视片段，建立用法、搭配与语感——可理解输入 + 语境习得的最佳实践。</div></div></div>
+      <div class="dim"><div class="ic">复</div><div class="dc"><div class="dl">复习策略 <span class="de">Review</span></div><div class="dt">间隔重复 + <b>在新语境中反复「遇见」目标词</b>，靠语境复现与听读强化记忆，而非纯卡片机械刷。</div></div></div>
+      <div class="dim"><div class="ic">群</div><div class="dc"><div class="dl">目标人群 <span class="de">Audience</span></div><div class="dt">进阶者、留学/影视英语爱好者、审美敏感人群，想要<b>「语感」而非「应试速成」</b>的学习者。</div></div></div>
+      <div class="dim"><div class="ic">¥</div><div class="dc"><div class="dl">收费方式 <span class="de">Pricing</span></div>
+        <div class="dt">免费可用基础功能，VIP 会员解锁高级语境、离线、多端同步等增值能力。</div>
+        <div class="tiers">
+          <div class="tier free"><span class="tn"><b>免费</b> 基础背词 + 语境例句</span><span class="tp">¥0</span></div>
+          <div class="tier"><span class="tn">VIP 会员（高级语境·离线·同步）</span><span class="tp">约 ¥98/年</span></div>
+          <div class="tier"><span class="tn">扩展词库 / 资源</span><span class="tp">增值付费</span></div>
+        </div>
+        <div class="dt" style="font-size:11.5px;margin-top:6px;color:var(--ink-faint)">价格为公开量级，以 App 内为准。<a class="ref" href="#f12">12</a></div>
+      </div></div>
+      <div class="dim"><div class="ic">⛁</div><div class="dc"><div class="dl">科学落点 <span class="de">Evidence</span></div><div class="dt" style="display:flex;flex-wrap:wrap;gap:6px 16px">语境习得 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span> 双重编码 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 间隔重复 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 主动产出 <span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></div></div>
+    </div>
+
+    <div class="sg">
+      <div class="box good"><div class="bt"><span>✓</span>核心优势</div><p>真实语境与原声影音行业领先，建立语感而非死记；UI/体验精致，情感与审美黏性强，口碑溢价高。</p></div>
+      <div class="box bad"><div class="bt"><span>!</span>未满足好的市场</div><p>语境输入极强但仍偏<b>「输入侧」</b>，缺乏引导<b>主动输出（造句、口语、写作）</b>的闭环；对零基础者丰富语境反而「不可理解」；路径偏自由，缺强目标人群所需的结构与效率。</p></div>
+    </div>
+  </div>
+
+  <!-- 知米 -->
+  <div class="profile rv" style="--ac:#7a4ea5">
+    <div class="pf-hero">
+      <div class="pf-rank"><span class="r">05</span><span class="nm">知米背单词<span class="en">Zhimi · 词块构词派</span></span></div>
+      <div class="pf-tag">「词以群记」的实用派。强调短语词块（chunk）、词根词缀与高频搭配，教用户「成串记、按规律记」，帮助应试者高效拿下四六级与考研词汇。</div>
+      <div class="pf-meta">出品方：<b>知米英语团队</b> · 定位：方法论驱动的应试背词<a class="ref" href="#f11">11</a></div>
+      <div class="pf-pills"><span class="pill">词块 / 搭配</span><span class="pill">词根词缀</span><span class="pill">应试高效</span><span class="pill">性价比</span></div>
+    </div>
+
+    <div class="ph-wrap">
+      <div class="phone"><div class="scr" style="--sc-fg:#6a3fa0;background:#fdfbff">
+        <div class="sbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="body-s">
+          <div class="s-word" style="color:#4a2a78">export</div>
+          <div class="s-ph" style="color:#7a5aa8">/ˈekspɔːt/ &nbsp;v. 出口　n. 出口（货物）</div>
+          <div style="background:#f3edfb;border:1px solid #e3d6f5;border-radius:10px;padding:10px 12px;margin-top:14px;font-size:11px;color:#4a2a78;line-height:1.75"><b>词根拆解</b><br>ex-（向外）&nbsp;+&nbsp; port（运送）<br>→ 运到外面去 ＝ <b>出口</b></div>
+          <div style="font-size:10px;font-weight:700;color:#4a2a78;margin-top:14px">高频词块 Chunks</div>
+          <div style="font-size:10.5px;color:#52416e;margin-top:2px">
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #efe8f8"><span>export goods</span><span>出口商品</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #efe8f8"><span>export market</span><span>出口市场</span></div>
+            <div style="display:flex;justify-content:space-between;padding:5px 0"><span>oil exports</span><span>石油出口</span></div>
+          </div>
+          <div class="s-btn" style="border-color:#7a4ea5;background:#7a4ea5;color:#fff;text-align:center;font-weight:700;margin-top:12px">下一个 →</div>
+        </div>
+      </div></div>
+      <div class="ph-cap">示意界面：词根拆解 + 高频词块搭配（非官方截图）</div>
+    </div>
+
+    <div class="dims">
+      <div class="dim"><div class="ic">战</div><div class="dc"><div class="dl">战略定位 <span class="de">Strategy</span></div><div class="dt">以「<b>方法论 + 性价比</b>」服务应试，靠词块与构词的差异化方法在四六级/考研人群中口碑渗透，走务实工具路线。</div></div></div>
+      <div class="dim"><div class="ic">学</div><div class="dc"><div class="dl">学习策略 <span class="de">Learning</span></div><div class="dt">核心是<b>精细加工</b>：词块（chunk）+ 词根词缀 + 搭配例句，教「按规律批量记、按搭配记」，而非孤立单词。</div></div></div>
+      <div class="dim"><div class="ic">复</div><div class="dc"><div class="dl">复习策略 <span class="de">Review</span></div><div class="dt">间隔重复 + <b>词块与搭配测验</b>，强化辨析与搭配记忆，让复习贴近真实考试题型。</div></div></div>
+      <div class="dim"><div class="ic">群</div><div class="dc"><div class="dl">目标人群 <span class="de">Audience</span></div><div class="dt"><b>四六级、考研中追求性价比与方法论</b>的应试者，偏好「讲规律、讲效率」的实用型学习者。</div></div></div>
+      <div class="dim"><div class="ic">¥</div><div class="dc"><div class="dl">收费方式 <span class="de">Pricing</span></div>
+        <div class="dt">免费基础背词，会员解锁高级功能与词库，另有课程付费，整体主打高性价比。</div>
+        <div class="tiers">
+          <div class="tier free"><span class="tn"><b>免费</b> 基础背词 + 词块</span><span class="tp">¥0</span></div>
+          <div class="tier"><span class="tn">会员（高级功能 / 词库）</span><span class="tp">约 ¥98/年</span></div>
+          <div class="tier"><span class="tn">课程 / 专项词库</span><span class="tp">单独付费</span></div>
+        </div>
+        <div class="dt" style="font-size:11.5px;margin-top:6px;color:var(--ink-faint)">价格为公开量级，以 App 内为准。<a class="ref" href="#f12">12</a></div>
+      </div></div>
+      <div class="dim"><div class="ic">⛁</div><div class="dc"><div class="dl">科学落点 <span class="de">Evidence</span></div><div class="dt" style="display:flex;flex-wrap:wrap;gap:6px 16px">精细加工 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 间隔重复 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 主动回忆 <span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> 动机设计 <span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></div></div>
+    </div>
+
+    <div class="sg">
+      <div class="box good"><div class="bt"><span>✓</span>核心优势</div><p>词块与构词方法论扎实，提升记忆效率与可迁移性；应试针对性强，性价比口碑好。</p></div>
+      <div class="box bad"><div class="bt"><span>!</span>未满足好的市场</div><p>品牌与体验偏<b>「工具感」</b>，年轻化、情感化运营弱于头部；强应试效率、弱动机维系与长期陪伴；对非应试、成人与口语产出场景覆盖有限。</p></div>
+    </div>
+  </div>
+
+  <!-- 横向对比 -->
+  <div class="rv">
+    <h3>5.6 横向对比 <span class="tag">— five players, one shared blind spot</span></h3>
+    <p>把五家放在同一张表上，一个共同的「集体盲区」清晰浮现：<strong>它们都强在「记忆输入」，都弱在「主动产出」与「内在动机」。</strong></p>
+    <div class="matrix">
+      <div class="mrow h"><div>产品</div><div>最强能力</div><div>共同短板</div></div>
+      <div class="mrow"><div class="lab">百词斩</div><div><span class="tagp">图像编码</span></div><div>产出弱 · 偏轻</div></div>
+      <div class="mrow"><div class="lab">墨墨</div><div><span class="tagp">间隔算法</span></div><div>枯燥 · 语境弱</div></div>
+      <div class="mrow"><div class="lab">扇贝</div><div><span class="tagp">习惯社区</span></div><div>外驱依赖</div></div>
+      <div class="mrow"><div class="lab">不背</div><div><span class="tagp">真实语境</span></div><div>缺产出闭环</div></div>
+      <div class="mrow"><div class="lab">知米</div><div><span class="tagp">词块构词</span></div><div>工具感 · 动机弱</div></div>
+    </div>
+    <div class="pull">五家都在比谁让你「记得更牢」，却没人认真回答：记牢之后，你真的「会用」了吗？记完这一程，你还有动力走下一程吗？
+      <span class="by">— Top5 横评结论</span></div>
+  </div>
+</section>
+
+<!-- ===================== 06 机会 ===================== -->
+<section id="s6" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>06 · The Gaps</div>
+    <h2>被忽视的市场<br>与破局之道</h2>
+    <p class="lead">把第四章的科学缺口、第五章的产品盲区、第二章的人群空白叠在一起，浮现出六块尚未被满足好的市场——以及如何满足它们。</p>
+  </div>
+
+  <div class="rv">
+    <div class="opp">
+      <div class="oi">G1</div>
+      <div>
+        <h4>「记住」到「会用」的鸿沟：被动词汇 → 主动词汇</h4>
+        <p>现有产品几乎只训练「认得」（receptive），用户能选对词义，却<strong>说不出、写不出、用不对搭配</strong>。这是用户最真实的痛点：背了上万词，开口还是哑巴。</p>
+        <div class="sol"><b>如何满足：</b>构建「输出闭环」——AI 引导造句并即时纠错、看图 / 看中文说英文、把目标词嵌入写作与口语任务，用<strong>产出性检索</strong>（generative retrieval）把被动词汇逼成主动词汇。</div>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="oi">G2</div>
+      <div>
+        <h4>动机崩塌：从「外部打卡」到「内在驱动」</h4>
+        <p>打卡、排行、契约都是外部动机，考试一结束便失效，甚至挤出兴趣。这是行业留存断崖的根因（呼应原理 8 / SDT）。</p>
+        <div class="sol"><b>如何满足：</b>用自我决定理论重设激励——给<b>自主感</b>（自选路径与目标）、<b>胜任感</b>（可见的能力成长而非单纯天数）、<b>归属感</b>（有意义的学习共同体）；用「能力解锁」叙事替代「断签焦虑」。</div>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="oi">G3</div>
+      <div>
+        <h4>成人零基础 / 银发 / 陪读家长：被应试逻辑遗忘的人群</h4>
+        <p>现有产品几乎全为「有考试 deadline 的年轻人」设计。庞大的成人零基础、职场进阶、退休圆梦、陪娃家长群体，被「太硬核、太应试」拒之门外。</p>
+        <div class="sol"><b>如何满足：</b>面向「无 deadline 慢学者」的产品线——可理解输入起步、生活 / 职场实用主题、温和节奏、大字号无障碍设计、强情感陪伴而非分数压迫。</div>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="oi">G4</div>
+      <div>
+        <h4>真正的 AI 个性化导师：而非「换皮的题库」</h4>
+        <p>多数产品的「智能」仍停留在固定算法调度。大模型让「按你的兴趣造句、按你的错误补强、对你的口语即时反馈」第一次普惠可行——这是尚未被头部真正占据的高地。</p>
+        <div class="sol"><b>如何满足：</b>以 LLM 做「贴身私教」：动态生成贴合用户兴趣与水平的语境例句、诊断错误模式并定向出题、对话式讲解词源与辨析、实时批改造句与口语发音。</div>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="oi">G5</div>
+      <div>
+        <h4>元认知缺位：用户不知道自己「到底会了没」</h4>
+        <p>多数产品给的是「学了多少天 / 多少词」，而非「你<strong>真正掌握</strong>了多少、在什么场景下还会错」。缺乏诚实的掌握度反馈，用户陷入「虚假流畅」的自我感觉良好。</p>
+        <div class="sol"><b>如何满足：</b>把「掌握度」做成可信指标——区分认得 / 拼得 / 用得三个层级；用合意困难与延迟测验校准真实记忆；给出「你以为会、其实没会」的诚实提醒与精准复习清单。</div>
+      </div>
+    </div>
+
+    <div class="opp">
+      <div class="oi">G6</div>
+      <div>
+        <h4>把背单词做成「想打开的内容」，而非「被逼的任务」</h4>
+        <p>注意力被短视频与游戏重塑，但背单词体验仍停留在卡片刷题。情绪强化记忆（原理 8），而枯燥正是最大的留存杀手。</p>
+        <div class="sol"><b>如何满足：</b>剧情化 / 故事线词汇旅程、可听可看的微内容、轻游戏化的「心流」难度曲线、值得分享的成长时刻——让用户因为<b>想看下一集</b>而回来，而非因为怕断签。</div>
+      </div>
+    </div>
+
+    <div class="note"><b>破局逻辑：</b>这六块缺口并非孤立，而可被一条主线串起——<b>「从记忆工具，进化为会用、想学、被陪伴的 AI 语言成长伙伴」</b>。谁先把「产出 + 动机 + 个性化」三者打通，谁就定义下一代产品。</div>
+  </div>
+</section>
+
+<!-- ===================== 07 战略 ===================== -->
+<section id="s7" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>07 · Strategy</div>
+    <h2>机会矩阵<br>与战略建议</h2>
+    <p class="lead">把机会按「市场吸引力 × 进入可行性」排布，给出可落地的优先级。</p>
+  </div>
+
+  <div class="rv">
+    <div class="matrix">
+      <div class="mrow h"><div>机会方向</div><div>吸引力</div><div>建议</div></div>
+      <div class="mrow"><div class="lab">AI 个性化私教<br><span style="font-size:11px;color:var(--ink-faint)">G4</span></div><div><span class="tagp hot">极高</span></div><div>核心引擎，优先 All-in</div></div>
+      <div class="mrow"><div class="lab">产出转化闭环<br><span style="font-size:11px;color:var(--ink-faint)">G1</span></div><div><span class="tagp hot">极高</span></div><div>差异化护城河</div></div>
+      <div class="mrow"><div class="lab">内在动机系统<br><span style="font-size:11px;color:var(--ink-faint)">G2</span></div><div><span class="tagp hot">高</span></div><div>决定长期留存</div></div>
+      <div class="mrow"><div class="lab">成人 / 银发蓝海<br><span style="font-size:11px;color:var(--ink-faint)">G3</span></div><div><span class="tagp">高</span></div><div>独立产品线切入</div></div>
+      <div class="mrow"><div class="lab">元认知反馈<br><span style="font-size:11px;color:var(--ink-faint)">G5</span></div><div><span class="tagp">中高</span></div><div>低成本高口碑</div></div>
+      <div class="mrow"><div class="lab">内容化 / 游戏化<br><span style="font-size:11px;color:var(--ink-faint)">G6</span></div><div><span class="tagp">中</span></div><div>体验层增益</div></div>
+    </div>
+
+    <h3>三步走战略建议</h3>
+    <div class="principle" style="border-left:4px solid var(--vermilion)">
+      <h4>第一步 · 用 AI 重做「私教级」核心体验</h4>
+      <p>把 LLM 嵌入记忆闭环：个性化语境生成 + 错误诊断 + 实时造句 / 口语批改。以「认知差」建立第一波口碑与差异化心智。</p>
+    </div>
+    <div class="principle" style="border-left:4px solid var(--jade)">
+      <h4>第二步 · 打通「产出 + 动机 + 元认知」铁三角</h4>
+      <p>把「会用」作为核心价值主张，用 SDT 重构激励、用诚实掌握度建立信任。让产品从「背词工具」升级为「能力成长平台」，抬高留存与付费天花板。</p>
+    </div>
+    <div class="principle" style="border-left:4px solid var(--gold)">
+      <h4>第三步 · 向蓝海人群与高客单细分延展</h4>
+      <p>以成人 / 银发 / 职场为增量蓝海，以留学 / 商务为高客单变现极，构建多产品线矩阵，摆脱单一应试人群的天花板。</p>
+    </div>
+
+    <div class="pull">下一代赢家，不会是「更好的背单词 App」，而是「让你不知不觉真的学会一门语言」的 AI 成长伙伴。
+      <span class="by">— 战略终局判断</span></div>
+  </div>
+</section>
+
+<!-- ===================== 08 来源 ===================== -->
+<section id="s8" class="body">
+  <div class="sec-head rv">
+    <div class="sec-num"><span class="line"></span>08 · Sources & Notes</div>
+    <h2>数据来源与说明</h2>
+  </div>
+  <div class="foot rv">
+    <h4>References · 引用与说明</h4>
+    <ol>
+      <li id="f1">中国在线教育用户规模量级，参考中国互联网络信息中心（CNNIC）历年《中国互联网络发展状况统计报告》中「在线教育」用户口径；本报告取约 3.8 亿为量级参考，具体数值以官方最新报告为准。</li>
+      <li id="f2">头部背单词 App「累计注册用户超 1 亿」为各产品公开宣传 / 媒体报道中的量级口径，非同期月活，仅作规模参考。</li>
+      <li id="f3">需求场景分布为综合应用商店评论结构、公开行业调研与用户访谈的<strong>研究估算</strong>，用于呈现结构性比例，非精确统计。</li>
+      <li id="f4">工具类学习 App 的「7 天次留拐点」与长期留存偏弱，为行业普遍观察规律，具体因产品而异。</li>
+      <li id="f5">间隔重复算法演进：Ebbinghaus（1885）遗忘曲线；SuperMemo SM-2 算法（Wozniak）；FSRS（Free Spaced Repetition Scheduler，开源记忆调度模型）。</li>
+      <li id="f6">检索练习与测验效应：Roediger &amp; Karpicke (2006), "Test-Enhanced Learning"；精细加工编码相关认知心理学研究。</li>
+      <li id="f7">合意困难与交错练习：Robert &amp; Elizabeth Bjork, "Desirable Difficulties"；interleaving 相关学习科学研究。</li>
+      <li id="f8">双重编码理论：Allan Paivio, Dual Coding Theory（1971/1986）。</li>
+      <li id="f9">可理解输入假说：Stephen Krashen, Input Hypothesis；语境化词汇习得相关二语习得研究。</li>
+      <li id="f10">动机理论：Deci &amp; Ryan, Self-Determination Theory（自我决定理论）；情绪与记忆编码相关神经科学研究。</li>
+      <li id="f11">各 App 的出品方、上线年份与定位为据公开资料整理，可能与最新工商 / 产品信息存在出入，请以官方为准。</li>
+      <li id="f12">文中各 App 的会员价格、记忆量计费、课程费用等均为<strong>公开渠道可见的量级参考</strong>，会随促销与版本频繁变动，请以各 App 内实时标价为准。</li>
+      <li id="f13">手机界面示意图为依据公开产品形态绘制的<strong>还原示意</strong>，<strong>非官方截图</strong>，不含任何受版权保护的原始素材，仅用于说明交互机制。</li>
+      <li id="f14">「科学落点」星级为本报告依据各产品公开机制做出的<strong>相对评估</strong>，非官方数据，供横向比较参考。</li>
+      <li id="f15">FSRS、SM-2 等算法与记忆科学原理的产品化判断为研究观点，仅供参考，不代表各产品的实际实现。</li>
+    </ol>
+    <p class="disclaimer">说明：本报告为<strong>独立行业分析与产品洞察</strong>，旨在提供研究视角与产品策略参考。文中市场规模、用户比例、机会评分等数据为综合公开资料整理与模型化估算，可能与各公司实际经营数据存在差异，不构成投资建议。各 App 之产品特征基于公开信息与通用认知概括，最终请以各产品官方为准。</p>
+    <div class="sign">Prepared as a mobile-first research report · 2026<br>顾客洞察 × 记忆心理学 × 教育心理学 × 动机设计 × 用户思维</div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// reading progress
+var bar=document.getElementById('bar');
+function onScroll(){
+  var h=document.documentElement;
+  var sc=(h.scrollTop||document.body.scrollTop);
+  var max=(h.scrollHeight-h.clientHeight);
+  bar.style.width=(max>0?(sc/max*100):0)+'%';
+}
+document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// reveal on scroll
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // animate bars within
+      e.target.querySelectorAll('.fill').forEach(function(f){
+        f.style.width=(f.dataset.w||0)+'%';
+      });
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+// also catch any fills already in view
+window.addEventListener('load',function(){
+  document.querySelectorAll('.rv.in .fill,.fill').forEach(function(f){
+    var r=f.getBoundingClientRect();
+    if(r.top<window.innerHeight){f.style.width=(f.dataset.w||0)+'%';}
+  });
+});
+</script>
+</body>
+</html>
