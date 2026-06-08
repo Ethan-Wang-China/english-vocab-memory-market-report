@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0e120c">
+<title>词野 WordsCantRun · 初高中单词学习路线 · 交互原型</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* app (dark) */
+  --bg:#0e120c; --surf:#161d12; --surf2:#1e271a; --line:#2c3724;
+  --lime:#c2f04a; --lime-d:#9cc933; --orange:#ff7c3e; --coral:#ff6b5b;
+  --txt:#eef3e6; --mut:#94a384; --gold:#ffd24a;
+  /* doc (light) */
+  --d-bg:#f6f1e6; --d-card:#fffdf7; --d-ink:#1a1813; --d-mut:#6c6557; --d-line:#e6ddcb;
+  --d-orange:#e35a22; --d-green:#3c7a31;
+  --sans:"Noto Sans SC",-apple-system,sans-serif;
+  --disp:"Bricolage Grotesque",sans-serif;
+  --round:"Baloo 2",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--d-bg);color:var(--d-ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* ============ DOC (light spec) ============ */
+.doc{max-width:780px;margin:0 auto;padding:0 22px}
+.hero{padding:54px 0 30px;text-align:center;position:relative}
+.brandmark{display:inline-flex;align-items:center;gap:10px;font-family:var(--round);font-weight:800;font-size:15px;color:var(--d-orange);background:#fff2e6;border:1.5px solid #ffd7b8;padding:7px 16px;border-radius:30px}
+.brandmark .fox{font-size:18px}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(32px,8.5vw,52px);line-height:1.06;margin:22px 0 0;letter-spacing:-.02em}
+.hero h1 .g{color:var(--d-orange)}
+.hero h1 .ul{background:linear-gradient(transparent 62%,#cdee7a 0)}
+.hero .sub{margin:18px auto 0;max-width:34ch;font-size:16.5px;color:var(--d-mut)}
+.hero .hint{margin-top:26px;display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--d-green);background:#eaf4e0;border:1.5px solid #cfe6bc;padding:9px 18px;border-radius:30px;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:700;letter-spacing:.04em;font-size:12px;text-transform:uppercase;color:var(--d-orange);margin-bottom:14px}
+.kicker .ln{width:26px;height:2px;background:var(--d-orange)}
+.doc section{padding:42px 0}
+.doc h2{font-family:var(--disp);font-weight:800;font-size:clamp(25px,6.5vw,34px);line-height:1.16;letter-spacing:-.01em}
+.doc .lead{margin-top:13px;font-size:16px;color:var(--d-mut)}
+.doc h3{font-family:var(--disp);font-weight:700;font-size:20px;margin:26px 0 10px}
+.doc p{margin:0 0 14px;font-size:15.5px}
+.doc strong{font-weight:800}
+em.mk{font-style:normal;background:linear-gradient(transparent 60%,#cdee7a 0);padding:0 2px}
+
+.maprow{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+.mapc{background:var(--d-card);border:1px solid var(--d-line);border-radius:16px;padding:17px 18px;box-shadow:0 10px 30px -22px rgba(40,30,10,.4)}
+.mapc .gtag{display:inline-block;font-family:var(--round);font-weight:800;font-size:12px;color:#fff;background:var(--d-orange);padding:2px 10px;border-radius:8px;margin-bottom:9px}
+.mapc .gtag.g2{background:var(--d-green)}.mapc .gtag.g4{background:#b9831c}.mapc .gtag.g5{background:#9a4bd0}
+.mapc h4{font-family:var(--disp);font-weight:700;font-size:16px;margin-bottom:4px}
+.mapc p{font-size:13.5px;color:var(--d-mut);margin:0}
+
+/* route stages */
+.stageflow{margin-top:22px;display:flex;flex-direction:column;gap:0}
+.stg{display:flex;gap:15px;position:relative;padding-bottom:22px}
+.stg:not(:last-child)::before{content:"";position:absolute;left:19px;top:42px;bottom:0;width:2px;background:repeating-linear-gradient(var(--d-line) 0 5px,transparent 5px 10px)}
+.stg .sn{width:40px;height:40px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--round);font-weight:800;font-size:17px;color:#fff;background:var(--d-ink);z-index:1}
+.stg.s1 .sn{background:#e35a22}.stg.s2 .sn{background:#d59016}.stg.s3 .sn{background:#3c7a31}.stg.s4 .sn{background:#2f7d83}.stg.s5 .sn{background:#7a45c0}
+.stg .sc{flex:1;padding-top:2px}
+.stg .sc h4{font-family:var(--disp);font-weight:700;font-size:17px}
+.stg .sc .en{font-family:var(--round);font-size:12px;color:var(--d-mut);font-weight:600}
+.stg .sc p{font-size:14px;color:var(--d-mut);margin:7px 0 0}
+.stg .sc .why2{margin-top:8px;font-size:12px;font-weight:700;color:var(--d-green);background:#eaf4e0;display:inline-block;padding:3px 10px;border-radius:20px}
+
+/* review schedule table */
+.tbl{margin-top:18px;border:1px solid var(--d-line);border-radius:14px;overflow:hidden;background:var(--d-card);font-size:13.5px}
+.tbl .r{display:grid;grid-template-columns:1.1fr 1fr 1.3fr;}
+.tbl .r>div{padding:11px 12px;border-bottom:1px solid var(--d-line);border-right:1px solid var(--d-line)}
+.tbl .r>div:last-child{border-right:0}
+.tbl .r.h>div{background:var(--d-ink);color:var(--d-bg);font-family:var(--disp);font-weight:700;font-size:12.5px}
+.tbl .r:last-child>div{border-bottom:0}
+.tbl .lv{font-family:var(--round);font-weight:700}
+.tbl .l-rec{color:#e35a22}.tbl .l-sp{color:#d59016}.tbl .l-use{color:#3c7a31}
+
+.pill3{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.pill3 span{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:20px;background:#fff;border:1.5px solid var(--d-line)}
+
+.effect{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+.eff{background:var(--d-card);border:1px solid var(--d-line);border-left:4px solid var(--d-green);border-radius:12px;padding:15px 16px}
+.eff h4{font-family:var(--disp);font-weight:700;font-size:15.5px;margin-bottom:5px}
+.eff p{font-size:13.5px;color:var(--d-mut);margin:0}
+.eff .num{font-family:var(--round);font-weight:800;color:var(--d-green)}
+
+.callout{background:#fff6ec;border:1px solid #ffd9b8;border-radius:14px;padding:16px 18px;margin:18px 0;font-size:14.5px;color:#7a4a23}
+.callout b{color:var(--d-orange)}
+
+/* ============ STAGE + DEVICE ============ */
+.stage-wrap{background:radial-gradient(120% 80% at 50% 0%,#21271b 0%,#0c0f09 60%);padding:34px 16px 40px;margin:30px 0}
+.stage-lead{max-width:600px;margin:0 auto 22px;text-align:center;color:#cfe0bb}
+.stage-lead .t{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--lime)}
+.stage-lead .s{font-size:14px;margin-top:6px;color:#9fb389}
+
+.device{width:392px;max-width:100%;height:812px;margin:0 auto;border:11px solid #05070400;border-radius:52px;background:#000;position:relative;box-shadow:0 0 0 11px #07090555,0 40px 90px -30px rgba(0,0,0,.85),0 0 70px -30px var(--lime);overflow:hidden}
+.device::after{content:"";position:absolute;inset:0;border-radius:42px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);pointer-events:none;z-index:60}
+.app{position:absolute;inset:0;border-radius:42px;overflow:hidden;background:var(--bg);color:var(--txt);display:flex;flex-direction:column;font-size:14px}
+/* status bar */
+.statusbar{height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-family:var(--round);font-weight:700;font-size:13px;color:var(--txt);flex-shrink:0;z-index:30}
+.statusbar .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:96px;height:26px;background:#000;border-radius:16px}
+.statusbar .ic{display:flex;gap:5px;align-items:center;font-size:11px}
+
+.screens{flex:1;position:relative;overflow:hidden}
+.screen{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:6px 18px 22px;display:none;-webkit-overflow-scrolling:touch}
+.screen.active{display:block;animation:scrIn .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes scrIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.screen::-webkit-scrollbar{width:0}
+
+/* tab bar */
+.tabbar{height:66px;flex-shrink:0;background:rgba(12,16,9,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-around;padding-bottom:4px;z-index:30}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--mut);font-size:10.5px;font-weight:700;border:0;background:none;cursor:pointer;padding:6px 14px;border-radius:14px}
+.tab .ti{font-size:19px;line-height:1}
+.tab.on{color:var(--lime)}
+.tab.on .ti{transform:translateY(-1px)}
+
+/* ---- shared app components ---- */
+.greet{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
+.avatar{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#ff9a4d,#ff6f3a);display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 8px 20px -8px var(--orange)}
+.greet .gt b{font-family:var(--round);font-weight:800;font-size:16px;color:var(--txt)}
+.greet .gt span{display:block;font-size:12px;color:var(--mut)}
+.statrow{display:flex;gap:10px;margin-bottom:18px}
+.stat{flex:1;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px 13px}
+.stat .v{font-family:var(--round);font-weight:800;font-size:22px;color:var(--lime);line-height:1}
+.stat .v small{font-size:12px;color:var(--mut)}
+.stat .k{font-size:11px;color:var(--mut);margin-top:3px}
+.stat.o .v{color:var(--orange)}
+
+.card{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.sectit{font-family:var(--disp);font-weight:700;font-size:15px;margin:6px 2px 11px;display:flex;align-items:center;justify-content:space-between}
+.sectit .more{font-size:11.5px;color:var(--mut);font-weight:600}
+
+/* trail (today route) */
+.trail{position:relative;padding:4px 0}
+.tnode{display:flex;align-items:center;gap:13px;padding:11px 0;position:relative}
+.tnode .dot{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--round);font-weight:800;font-size:13px;border:2px solid var(--line);background:var(--surf2);color:var(--mut);z-index:1}
+.tnode.done .dot{background:var(--lime);border-color:var(--lime);color:#0e120c}
+.tnode.now .dot{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 0 0 5px rgba(255,124,62,.18);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 5px rgba(255,124,62,.18)}50%{box-shadow:0 0 0 9px rgba(255,124,62,.06)}}
+.tnode::before{content:"";position:absolute;left:16px;top:-7px;height:18px;width:2px;background:var(--line)}
+.tnode:first-child::before{display:none}
+.tnode .tw{flex:1}
+.tnode .tw b{font-family:var(--round);font-weight:700;font-size:15px}
+.tnode .tw span{display:block;font-size:11.5px;color:var(--mut)}
+.tnode .chev{color:var(--mut);font-size:16px}
+.tnode.now .tw b{color:var(--orange)}
+
+.bigbtn{display:block;width:100%;border:0;cursor:pointer;font-family:var(--round);font-weight:800;font-size:16px;color:#0e120c;background:var(--lime);padding:16px;border-radius:18px;text-align:center;box-shadow:0 12px 26px -12px var(--lime);transition:transform .12s}
+.bigbtn:active{transform:scale(.97)}
+.bigbtn.o{background:var(--orange);color:#fff;box-shadow:0 12px 26px -12px var(--orange)}
+.ghostbtn{display:block;width:100%;border:1.5px solid var(--line);background:transparent;color:var(--txt);font-weight:700;font-size:14px;padding:13px;border-radius:16px;cursor:pointer;font-family:var(--sans)}
+
+/* ---- LEARN FLOW ---- */
+#scr-learn{padding:0}
+.lhead{display:flex;align-items:center;gap:12px;padding:8px 18px 12px}
+.lhead .x{width:32px;height:32px;border-radius:50%;background:var(--surf2);border:0;color:var(--mut);font-size:16px;cursor:pointer;flex-shrink:0}
+.lprog{flex:1;display:flex;gap:5px}
+.lprog i{flex:1;height:5px;border-radius:4px;background:var(--surf2)}
+.lprog i.on{background:var(--lime)}
+.lbody{padding:6px 18px 20px}
+.lstep{display:none;animation:scrIn .3s}
+.lstep.active{display:block}
+.steplabel{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:700;font-size:12px;color:var(--orange);text-transform:uppercase;letter-spacing:.03em;margin-bottom:12px}
+.steplabel .d{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+
+.intchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--lime);background:rgba(194,240,74,.12);border:1px solid rgba(194,240,74,.3);padding:4px 11px;border-radius:20px;margin-bottom:12px}
+.ctxbox{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:18px;font-size:16px;line-height:1.85}
+.ctxbox .blank{color:var(--orange);font-weight:800;border-bottom:2px dashed var(--orange);padding:0 14px}
+.ctxbox .hl{color:var(--lime);font-weight:800}
+.ask{font-family:var(--round);font-weight:700;font-size:15px;margin:16px 2px 10px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{border:1.5px solid var(--line);background:var(--surf);color:var(--txt);border-radius:14px;padding:13px 15px;font-size:14.5px;text-align:left;cursor:pointer;font-family:var(--sans);transition:.15s;display:flex;align-items:center;gap:10px}
+.opt:active{transform:scale(.98)}
+.opt .lt{width:24px;height:24px;border-radius:7px;background:var(--surf2);display:flex;align-items:center;justify-content:center;font-family:var(--round);font-weight:700;font-size:12px;color:var(--mut);flex-shrink:0}
+.opt.right{border-color:var(--lime);background:rgba(194,240,74,.12)}
+.opt.right .lt{background:var(--lime);color:#0e120c}
+.opt.wrong{border-color:var(--coral);background:rgba(255,107,91,.1)}
+.opt.wrong .lt{background:var(--coral);color:#fff}
+.shake{animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* reveal card */
+.reveal{display:none;margin-top:16px;animation:scrIn .35s}
+.reveal.show{display:block}
+.wordhead{display:flex;align-items:flex-end;gap:12px}
+.wordhead .w{font-family:var(--round);font-weight:800;font-size:34px;color:var(--txt);line-height:1}
+.wordhead .ph{font-size:13px;color:var(--mut);padding-bottom:5px}
+.wordhead .spk{margin-left:auto;width:38px;height:38px;border-radius:50%;background:var(--surf2);border:0;color:var(--lime);font-size:16px;cursor:pointer}
+.def{font-size:15px;margin-top:8px}
+.def b{color:var(--lime)}
+.imgbox{margin-top:14px;height:120px;border-radius:16px;background:linear-gradient(135deg,#2a3a1c,#43331a);display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);position:relative;overflow:hidden}
+.imgbox .em{font-size:46px}
+.imgbox .tagai{position:absolute;top:9px;right:9px;font-size:10px;font-weight:700;color:#0e120c;background:var(--lime);padding:3px 9px;border-radius:20px}
+.morph{margin-top:14px;background:var(--surf2);border-radius:14px;padding:13px 15px;font-size:13.5px;line-height:1.7}
+.morph b{color:var(--orange)}
+.lexitip{display:flex;gap:10px;margin-top:14px;background:rgba(255,124,62,.08);border:1px solid rgba(255,124,62,.22);border-radius:14px;padding:12px 14px}
+.lexitip .fx{font-size:22px;flex-shrink:0}
+.lexitip p{font-size:13px;color:#f0d9c6;margin:0}
+.lexitip b{color:var(--orange)}
+
+/* produce step */
+.scene{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:15px;font-size:14px;line-height:1.7}
+.scene .lbl{font-size:11.5px;font-weight:700;color:var(--mut);margin-bottom:5px}
+.scene .em{font-size:17px}
+.ta{width:100%;margin-top:12px;background:var(--surf);border:1.5px solid var(--line);border-radius:14px;padding:13px;color:var(--txt);font-family:var(--sans);font-size:15px;resize:none;min-height:74px}
+.ta:focus{outline:none;border-color:var(--lime)}
+.rowbtn{display:flex;gap:9px;margin-top:10px}
+.rowbtn .ghostbtn,.rowbtn .bigbtn{margin:0}
+.rowbtn .bigbtn{flex:1.4}.rowbtn .ghostbtn{flex:1}
+.aifb{display:none;margin-top:14px;animation:scrIn .35s}
+.aifb.show{display:block}
+.aibubble{display:flex;gap:10px;background:rgba(194,240,74,.07);border:1px solid rgba(194,240,74,.25);border-radius:14px;padding:13px 14px}
+.aibubble .fx{font-size:22px;flex-shrink:0}
+.aibubble .bb b{color:var(--lime)}
+.aibubble .bb p{font-size:13.5px;margin:0;color:#e8f3d6}
+.aibubble .bb .up{margin-top:8px;font-size:12.5px;color:var(--gold)}
+
+/* mastery step */
+.mlayers{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.ml{display:flex;align-items:center;gap:12px;background:var(--surf);border:1.5px solid var(--line);border-radius:14px;padding:13px 15px;cursor:pointer;transition:.15s}
+.ml .mi{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--surf2)}
+.ml .mt b{font-family:var(--round);font-weight:700;font-size:14px}
+.ml .mt span{display:block;font-size:11.5px;color:var(--mut)}
+.ml .chk{margin-left:auto;width:24px;height:24px;border-radius:50%;border:2px solid var(--line)}
+.ml.on{border-color:var(--lime);background:rgba(194,240,74,.08)}
+.ml.on .chk{background:var(--lime);border-color:var(--lime);position:relative}
+.ml.on .chk::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0e120c;font-weight:800;font-size:13px}
+.ml.sys{position:relative}
+.ml .systag{position:absolute;top:-8px;right:12px;font-size:9.5px;font-weight:700;color:#0e120c;background:var(--gold);padding:1px 8px;border-radius:20px}
+.nextcard{margin-top:16px;background:var(--surf2);border-radius:14px;padding:14px 15px;display:flex;align-items:center;gap:12px}
+.nextcard .ico{font-size:22px}
+.nextcard b{font-family:var(--round);color:var(--lime)}
+.nextcard span{font-size:12px;color:var(--mut)}
+
+/* review screen */
+.due{display:flex;align-items:center;gap:12px;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.due .w{font-family:var(--round);font-weight:700;font-size:15px;flex:1}
+.due .lay{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px}
+.lay.rec{color:#ff9a4d;background:rgba(255,124,62,.14)}
+.lay.sp{color:var(--gold);background:rgba(255,210,74,.14)}
+.lay.use{color:var(--lime);background:rgba(194,240,74,.14)}
+.due .when{font-size:11px;color:var(--mut);min-width:54px;text-align:right}
+.curve{height:74px;margin:6px 0 4px}
+.rev-card{display:none}
+.rev-card.show{display:block;animation:scrIn .3s}
+.ratebtns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.rate{border:1.5px solid var(--line);background:var(--surf);color:var(--txt);border-radius:14px;padding:12px;cursor:pointer;font-family:var(--sans);text-align:center}
+.rate b{display:block;font-family:var(--round);font-weight:700;font-size:14px}
+.rate span{font-size:11px;color:var(--mut)}
+.rate.r1 b{color:var(--coral)}.rate.r2 b{color:var(--orange)}.rate.r3 b{color:var(--gold)}.rate.r4 b{color:var(--lime)}
+
+/* me screen */
+.lexicard{background:linear-gradient(135deg,#2a2013,#1b2412);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.lexicard .big{font-size:44px}
+.lexicard .lv b{font-family:var(--round);font-weight:800;font-size:17px}
+.lexicard .lv span{font-size:12px;color:var(--mut)}
+.lexicard .bar{height:7px;background:var(--surf2);border-radius:5px;margin-top:8px;overflow:hidden}
+.lexicard .bar i{display:block;height:100%;width:68%;background:linear-gradient(90deg,var(--orange),var(--lime))}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{font-size:13px;font-weight:700;padding:8px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surf);color:var(--mut);cursor:pointer;transition:.15s}
+.chip.on{border-color:var(--lime);background:rgba(194,240,74,.12);color:var(--lime)}
+.ringwrap{display:flex;gap:16px;align-items:center}
+.ring{width:84px;height:84px;flex-shrink:0}
+.ringinfo .v{font-family:var(--round);font-weight:800;font-size:24px;color:var(--lime)}
+.ringinfo .k{font-size:12px;color:var(--mut)}
+.legend2{font-size:12px;color:var(--mut);margin-top:8px;line-height:1.8}
+.legend2 i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+.goal{display:flex;align-items:center;gap:12px;margin-top:6px}
+.goal input{flex:1;accent-color:var(--lime)}
+.goal .gv{font-family:var(--round);font-weight:800;color:var(--lime);min-width:58px;text-align:right}
+.squad{display:flex;align-items:center;gap:-8px}
+.squad .m{width:34px;height:34px;border-radius:50%;border:2px solid var(--surf);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--surf2)}
+.squad .m:first-child{margin-left:0}
+
+/* why annotations */
+.why{display:none;align-items:center;gap:5px;font-size:10px;font-weight:800;color:#0e120c;background:var(--lime);padding:2px 8px;border-radius:20px;margin-top:8px}
+body.show-why .why{display:inline-flex}
+.whytoggle{position:absolute;bottom:80px;right:14px;z-index:50;border:0;cursor:pointer;font-family:var(--round);font-weight:800;font-size:12px;color:#0e120c;background:var(--gold);padding:9px 14px;border-radius:30px;box-shadow:0 8px 20px -8px var(--gold);display:flex;align-items:center;gap:6px}
+body.show-why .whytoggle{background:var(--lime)}
+
+/* toast */
+.toast{position:absolute;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#0e120c;border:1px solid var(--lime);color:var(--lime);font-family:var(--round);font-weight:700;font-size:13.5px;padding:11px 20px;border-radius:30px;z-index:80;opacity:0;transition:.3s;white-space:nowrap;box-shadow:0 12px 30px -10px #000;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* confetti dot */
+.spark{position:absolute;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:70}
+
+.footer{padding:40px 0 70px;text-align:center;color:var(--d-mut);font-size:13px}
+.footer .logo{font-family:var(--round);font-weight:800;font-size:18px;color:var(--d-orange)}
+.footer a{color:var(--d-orange)}
+
+@media(min-width:840px){
+  .stage-wrap{border-radius:30px}
+}
+@media(max-width:430px){
+  .device{height:90svh;border-radius:0;border-width:0;box-shadow:none}
+  .device::after{border-radius:0}
+  .app{border-radius:0}
+  .stage-wrap{padding:18px 0 24px;margin:24px -22px}
+  .stage-lead{padding:0 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="doc">
+<header class="hero">
+  <span class="brandmark"><span class="fox">🦊</span> 词野 · WordsCantRun</span>
+  <h1>让每个单词，<br>从<span class="g">认识</span>到<span class="ul">会用</span>，<br>一个都跑不掉</h1>
+  <p class="sub">一份面向初高中生的单词学习路线 + 高保真交互原型。在「好记 · 间隔重复 · 测验」之上，聚焦 <strong>AI 个性化 · 学以致用 · 内在动机</strong>。</p>
+  <a href="#try" class="hint">👇 下面是可真实点按的 App 原型</a>
+</header>
+
+<section>
+  <div class="kicker"><span class="ln"></span>设计依据 · Based on the market report</div>
+  <h2>这份原型，<br>回应了报告里没人填平的三道缺口</h2>
+  <p class="lead">市场分析显示：Top5 主流 App 都强在「记忆输入」，却共同弱在<em class="mk">主动产出</em>与<em class="mk">内在动机</em>。词野把报告的结论，做成了可体验的产品。</p>
+  <div class="maprow">
+    <div class="mapc"><span class="gtag">G1</span><h4>学以致用 · 被动词汇 → 主动词汇</h4><p>每个词必须走完「产出关」：AI 引导你造句、放进真实场景，并即时纠错。记住 ≠ 会用，我们逼着你用出来。</p></div>
+    <div class="mapc"><span class="gtag g2">G2</span><h4>内在动机 · 用 SDT 代替打卡焦虑</h4><p>自主（选你感兴趣的主题）、胜任（三层掌握可视化）、归属（AI 伙伴 Lexi + 共学小队）。用「探索成长」叙事，而非「断签恐吓」。</p></div>
+    <div class="mapc"><span class="gtag g4">G4</span><h4>AI 私教 · 真个性化，不是换皮题库</h4><p>同一个词，球迷看到足球例句、动漫迷看到二次元例句；AI 诊断你的错误模式，动态调难度、定向补强。</p></div>
+    <div class="mapc"><span class="gtag g5">G5</span><h4>元认知 · 诚实的三层掌握度</h4><p>认得 / 会拼 / 会用，三层分别评估、分别排复习。揪出「你以为会、其实没会」的虚假流畅。</p></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ LIVE PROTOTYPE ============ -->
+<div class="stage-wrap" id="try">
+  <div class="stage-lead">
+    <div class="t">▶ 交互原型 · 真实可点按</div>
+    <div class="s">跟着橙色路线，完整学一个单词 abandon。点右下角 <b style="color:var(--gold)">🔍 原理</b> 可随时看每个交互背后的科学依据。</div>
+  </div>
+
+  <div class="device">
+    <div class="app">
+      <!-- status bar -->
+      <div class="statusbar">
+        <span class="notch"></span>
+        <span>9:41</span>
+        <span class="ic">📶 🔋 100%</span>
+      </div>
+
+      <div class="screens">
+
+        <!-- ======== HOME ======== -->
+        <div class="screen active" id="scr-home">
+          <div class="greet">
+            <div class="avatar">🦊</div>
+            <div class="gt"><b>嗨，准高一同学 👋</b><span>Lexi：今天 12 个词，我陪你逮住它们</span></div>
+          </div>
+          <div class="statrow">
+            <div class="stat"><div class="v" id="homeDone">3<small>/12</small></div><div class="k">今日进度</div></div>
+            <div class="stat o"><div class="v">7<small>天</small></div><div class="k">探索连续</div></div>
+            <div class="stat"><div class="v" id="homeEnergy">240</div><div class="k">⚡ 能量</div></div>
+          </div>
+
+          <div class="sectit">今日学习路线 <span class="more">高考核心词 · 第 3 关</span></div>
+          <div class="card" style="padding:8px 18px">
+            <div class="trail">
+              <div class="tnode done"><div class="dot">✓</div><div class="tw"><b>benefit</b><span>会用 · 已收入词野</span></div></div>
+              <div class="tnode done"><div class="dot">✓</div><div class="tw"><b>vivid</b><span>会用 · 已收入词野</span></div></div>
+              <div class="tnode done"><div class="dot">✓</div><div class="tw"><b>reluctant</b><span>会拼 · 待升级</span></div></div>
+              <div class="tnode now" onclick="startLearn()"><div class="dot">4</div><div class="tw"><b>abandon</b><span>👉 现在出发 · 初遇新词</span></div><div class="chev">›</div></div>
+              <div class="tnode"><div class="dot">5</div><div class="tw"><b>generous</b><span>未解锁</span></div></div>
+              <div class="tnode"><div class="dot">6</div><div class="tw"><b>obstacle</b><span>未解锁</span></div></div>
+            </div>
+          </div>
+          <span class="why">🔬 G6 内容化：把任务做成「探索路线」，用心流推进感替代待办清单</span>
+          <button class="bigbtn o" style="margin-top:16px" onclick="startLearn()">▶ 继续探索 · 学 abandon</button>
+          <div style="height:8px"></div>
+        </div>
+
+        <!-- ======== LEARN FLOW ======== -->
+        <div class="screen" id="scr-learn">
+          <div class="lhead">
+            <button class="x" onclick="tab('home')">✕</button>
+            <div class="lprog" id="lprog"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="lbody">
+
+            <!-- STEP 1 初遇 -->
+            <div class="lstep active" id="step1">
+              <div class="steplabel"><span class="d"></span>STEP 1 · 初遇 · 在语境里猜</div>
+              <span class="intchip">⚽ 已按你的兴趣「足球」生成语境</span>
+              <div class="ctxbox" id="ctx1">
+                The coach told his players never to <span class="blank">?</span> hope, even when they were losing three to nil.
+              </div>
+              <button class="ghostbtn" style="margin-top:10px" onclick="swapScene()">💡 换一个我感兴趣的场景</button>
+              <div class="ask">先别看答案——你觉得 <b style="color:var(--orange)">abandon</b> 在这里是什么意思？</div>
+              <div class="opts" id="opts1">
+                <button class="opt" onclick="guess(this,false)"><span class="lt">A</span>庆祝、欢呼</button>
+                <button class="opt" onclick="guess(this,true)"><span class="lt">B</span>放弃、舍弃</button>
+                <button class="opt" onclick="guess(this,false)"><span class="lt">C</span>安排、布置</button>
+              </div>
+              <span class="why">🔬 主动回忆 + 合意困难：先「努力猜」再揭晓，比直接看答案记得牢</span>
+
+              <div class="reveal" id="reveal1">
+                <div class="wordhead">
+                  <span class="w">abandon</span><span class="ph">/əˈbændən/</span>
+                  <button class="spk" onclick="toast('🔊 abandon')">🔊</button>
+                </div>
+                <div class="def"><b>v.</b> 放弃；抛弃；舍弃（某人/某物/某想法）</div>
+                <div class="imgbox"><span class="tagai">AI 生图</span><span class="em">🏳️⚽</span><span style="color:#cfe0bb;font-size:12px;max-width:150px">一名球员在落后时，扔下球转身离场的画面</span></div>
+                <div class="morph"><b>词源拆解：</b>a-（向…）+ bandon（控制权）→ 把控制权交出去 → 不再要了 = <b>放弃</b>。同族：abandonment（n. 放弃）。</div>
+                <span class="why">🔬 双重编码 + 精细加工：AI 配图 + 词源故事，给记忆两个钩子</span>
+                <div class="lexitip"><span class="fx">🦊</span><p><b>Lexi：</b>注意它常和抽象名词搭配——abandon <b>hope / a plan / the idea</b>，不只是「丢东西」哦。</p></div>
+                <button class="bigbtn" style="margin-top:16px" onclick="nextStep()">我记住啦，下一步 →</button>
+              </div>
+            </div>
+
+            <!-- STEP 2 检验 -->
+            <div class="lstep" id="step2">
+              <div class="steplabel"><span class="d"></span>STEP 2 · 检验 · 主动回忆</div>
+              <div class="ctxbox" style="font-size:15px">下面哪个词的意思是「<b style="color:var(--lime)">放弃、舍弃</b>」？<br><span style="color:var(--mut);font-size:12.5px">⚠️ 注意区分形近词</span></div>
+              <span class="why">🔬 交错练习：混入形近 / 近义干扰项，训练「辨别」而非「眼熟」</span>
+              <div class="opts" style="margin-top:14px" id="opts2">
+                <button class="opt" onclick="recall(this,false)"><span class="lt">A</span>abundant <span style="color:var(--mut);font-size:12px;margin-left:auto">丰富的</span></button>
+                <button class="opt" onclick="recall(this,true)"><span class="lt">B</span>abandon <span style="color:var(--mut);font-size:12px;margin-left:auto">？</span></button>
+                <button class="opt" onclick="recall(this,false)"><span class="lt">C</span>abolish <span style="color:var(--mut);font-size:12px;margin-left:auto">废除</span></button>
+                <button class="opt" onclick="recall(this,false)"><span class="lt">D</span>absorb <span style="color:var(--mut);font-size:12px;margin-left:auto">吸收</span></button>
+              </div>
+              <div class="reveal" id="reveal2">
+                <div class="lexitip"><span class="fx">🦊</span><p id="recallfb"><b>漂亮！</b> abandon ≠ abundant（丰富的），它俩长得像、最容易混。已帮你把这组形近词标记，后面复习会再考你一次。</p></div>
+                <button class="bigbtn" style="margin-top:16px" onclick="nextStep()">继续 →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3 学以致用 -->
+            <div class="lstep" id="step3">
+              <div class="steplabel"><span class="d"></span>STEP 3 · 学以致用 · 你来产出</div>
+              <div class="scene" id="scene3">
+                <div class="lbl">🎸 真实场景</div>
+                <div><span class="em">你最好的朋友想退出乐队。</span>用上 <b style="color:var(--lime)">abandon</b>，写一句话劝劝他 / 描述这件事 👇</div>
+              </div>
+              <button class="ghostbtn" style="margin-top:10px" onclick="swapScene3()">🔄 换我喜欢的场景</button>
+              <textarea class="ta" id="myinput" placeholder="试着写：Don't abandon ..."></textarea>
+              <div class="rowbtn">
+                <button class="ghostbtn" onclick="fillHint()">需要提示</button>
+                <button class="bigbtn" onclick="checkSentence()">让 Lexi 点评 ✦</button>
+              </div>
+              <span class="why">🔬 G1 学以致用：产出性检索（造句 + 即时纠错）才能把被动词汇逼成主动词汇</span>
+              <div class="aifb" id="aifb">
+                <div class="aibubble"><span class="fx">🦊</span><div class="bb" id="aibody"></div></div>
+                <button class="bigbtn" style="margin-top:14px" onclick="nextStep()">收下建议，继续 →</button>
+              </div>
+            </div>
+
+            <!-- STEP 4 掌握度 + 入库 -->
+            <div class="lstep" id="step4">
+              <div class="steplabel"><span class="d"></span>STEP 4 · 元认知 · 你到底会到哪一层？</div>
+              <p style="font-size:14px;color:var(--mut);margin:0 0 12px">基于你这一关的表现，Lexi 给出评估。你也可以自己调整 👇</p>
+              <div class="mlayers">
+                <div class="ml on" onclick="toggleML(this)"><div class="mi">👁️</div><div class="mt"><b>认得</b><span>见到能想起意思</span></div><div class="chk"></div></div>
+                <div class="ml on sys" onclick="toggleML(this)"><span class="systag">AI 判定已达</span><div class="mi">⌨️</div><div class="mt"><b>会拼</b><span>能正确拼写出来</span></div><div class="chk"></div></div>
+                <div class="ml on sys" onclick="toggleML(this)"><span class="systag">本关刚解锁</span><div class="mi">🚀</div><div class="mt"><b>会用</b><span>能在句子 / 场景里正确使用</span></div><div class="chk"></div></div>
+              </div>
+              <span class="why">🔬 G5 元认知：认得 / 会拼 / 会用三层分别评估，避免「以为会了」</span>
+              <div class="nextcard">
+                <span class="ico">🗓️</span>
+                <div><b>已排入复习计划</b><span id="nextrev">FSRS 预测：下次复习 2 天后 · 临界点唤醒</span></div>
+              </div>
+              <span class="why">🔬 间隔重复 FSRS：按你的真实表现预测遗忘点，自适应排程</span>
+              <button class="bigbtn" style="margin-top:18px" onclick="finishLearn()">🦊 收入词野！+15 能量</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ======== REVIEW ======== -->
+        <div class="screen" id="scr-review">
+          <div class="greet"><div class="avatar" style="background:linear-gradient(135deg,#c2f04a,#8fd11f)">🗓️</div>
+            <div class="gt"><b>今日复习 · 8 个词</b><span>Lexi：都在遗忘临界点，正是复习黄金时机</span></div></div>
+
+          <div class="card">
+            <div class="sectit" style="margin:0 0 6px">遗忘曲线 · 你的记忆账户</div>
+            <svg class="curve" viewBox="0 0 300 74">
+              <line x1="6" y1="60" x2="294" y2="60" stroke="#2c3724"/>
+              <path d="M6,14 C40,46 70,54 120,56 L120,16 C160,40 200,48 230,50 L230,18 C260,34 280,38 294,40" fill="none" stroke="var(--lime)" stroke-width="2.5"/>
+              <path d="M6,14 C40,50 80,58 294,62" fill="none" stroke="#5a6b48" stroke-width="1.6" stroke-dasharray="4 4"/>
+              <circle cx="120" cy="16" r="3.5" fill="var(--orange)"/><circle cx="230" cy="18" r="3.5" fill="var(--orange)"/>
+            </svg>
+            <div style="font-size:11.5px;color:var(--mut)">🟢 复习后留存　— — 不复习的自然遗忘　🟠 复习时点</div>
+            <span class="why">🔬 复习规则：在「即将忘记」时复习，效率最高、记得最久</span>
+          </div>
+
+          <div class="sectit">待复习（按掌握层级）</div>
+          <div class="due"><span class="w">reluctant</span><span class="lay sp">会拼</span><span class="when">现在</span></div>
+          <div class="due"><span class="w">vivid</span><span class="lay use">会用</span><span class="when">现在</span></div>
+          <div class="due"><span class="w">abundant ⚠</span><span class="lay rec">认得</span><span class="when">现在</span></div>
+          <div class="due"><span class="w">benefit</span><span class="lay use">会用</span><span class="when">+1天</span></div>
+          <span class="why">🔬 不同层级 → 不同题型：认得考识别、会拼考拼写、会用考造句（产出性复习）</span>
+
+          <button class="bigbtn" style="margin-top:6px" onclick="showRev()">开始复习</button>
+
+          <div class="rev-card" id="revCard" style="margin-top:18px">
+            <div class="card">
+              <div style="font-size:11.5px;color:var(--mut);margin-bottom:8px">会用层 · 产出式复习</div>
+              <div style="font-family:var(--round);font-weight:800;font-size:26px">vivid</div>
+              <div style="font-size:13px;color:var(--mut);margin:4px 0 0">用 vivid 形容你昨天做的一个梦：</div>
+              <textarea class="ta" placeholder="I had a vivid dream that ..."></textarea>
+              <div style="font-size:13px;color:var(--mut);margin-bottom:4px">回想得怎么样？（决定下次复习间隔）</div>
+              <div class="ratebtns">
+                <button class="rate r1" onclick="rev(this,'明天再见到它')"><b>重来</b><span>忘了</span></button>
+                <button class="rate r2" onclick="rev(this,'2 天后复习')"><b>模糊</b><span>想了很久</span></button>
+                <button class="rate r3" onclick="rev(this,'4 天后复习')"><b>认识</b><span>有点犹豫</span></button>
+                <button class="rate r4" onclick="rev(this,'9 天后复习')"><b>秒答</b><span>脱口而出</span></button>
+              </div>
+              <span class="why">🔬 FSRS：四档自评 → 动态计算下次间隔，越熟间隔越长</span>
+            </div>
+          </div>
+          <div style="height:8px"></div>
+        </div>
+
+        <!-- ======== ME ======== -->
+        <div class="screen" id="scr-me">
+          <div class="lexicard">
+            <span class="big">🦊</span>
+            <div class="lv" style="flex:1">
+              <b>Lexi · 你的探索向导</b><span>羁绊等级 Lv.6 · 已并肩 47 天</span>
+              <div class="bar"><i></i></div>
+            </div>
+          </div>
+          <span class="why">🔬 G2 归属感：把 AI 私教做成有成长关系的伙伴，而非冷冰冰的工具</span>
+
+          <div class="card">
+            <div class="sectit" style="margin:0 0 4px">自主 · 我感兴趣的主题</div>
+            <p style="font-size:12.5px;color:var(--mut);margin:0 0 10px">选好主题，AI 会用它来生成你的例句和场景</p>
+            <div class="chips" id="interests">
+              <span class="chip on" onclick="pick(this)">⚽ 足球</span>
+              <span class="chip" onclick="pick(this)">🎮 游戏</span>
+              <span class="chip" onclick="pick(this)">🎬 影视</span>
+              <span class="chip" onclick="pick(this)">🎵 音乐</span>
+              <span class="chip" onclick="pick(this)">🧪 科技</span>
+              <span class="chip" onclick="pick(this)">🏀 篮球</span>
+            </div>
+            <span class="why">🔬 G2 自主感 + G4 个性化：你选主题，AI 据此生成专属语境</span>
+          </div>
+
+          <div class="card">
+            <div class="sectit" style="margin:0 0 10px">胜任 · 我的掌握地图</div>
+            <div class="ringwrap">
+              <svg class="ring" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#2c3724" stroke-width="4"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--lime)" stroke-width="4" stroke-dasharray="62 100" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--gold)" stroke-width="4" stroke-dasharray="22 100" stroke-dashoffset="-62" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+              </svg>
+              <div class="ringinfo"><div class="v">1,860</div><div class="k">已收入词野</div>
+                <div class="legend2"><i style="background:var(--lime)"></i>会用 1,150 ·　<i style="background:var(--gold)"></i>会拼 410 ·　<i style="background:#2c3724"></i>认得 300</div>
+              </div>
+            </div>
+            <span class="why">🔬 G5 + 胜任感：能力成长可视化，让进步「看得见」</span>
+          </div>
+
+          <div class="card">
+            <div class="sectit" style="margin:0 0 8px">自主 · 每日目标</div>
+            <div class="goal"><input type="range" min="5" max="40" value="12" oninput="goalv(this.value)"><span class="gv" id="goalv">12 词</span></div>
+            <p style="font-size:12px;color:var(--mut);margin:8px 0 0">节奏自己定。Lexi 会根据你的状态，轻轻提醒、绝不逼你打卡。</p>
+            <span class="why">🔬 G2：用「自定节奏」替代「断签焦虑」，保护内在动机</span>
+          </div>
+
+          <div class="card">
+            <div class="sectit" style="margin:0 0 10px">归属 · 探索小队</div>
+            <div class="squad"><span class="m">🦊</span><span class="m">🐼</span><span class="m">🐯</span><span class="m">🐧</span><span class="m">🦉</span><span class="m" style="background:var(--lime);color:#0e120c;font-family:var(--round);font-weight:800;font-size:12px">+3</span></div>
+            <p style="font-size:12.5px;color:var(--mut);margin:10px 0 0">本周小队一起逮住了 <b style="color:var(--lime)">812</b> 个词。不比谁背得多，只一起向前走。</p>
+            <span class="why">🔬 G2 归属感：合作式共学，而非碾压式排行榜</span>
+          </div>
+          <div style="height:8px"></div>
+        </div>
+
+      </div><!-- /screens -->
+
+      <button class="whytoggle" onclick="toggleWhy()" id="whyBtn">🔍 原理</button>
+      <div class="toast" id="toast"></div>
+
+      <!-- tab bar -->
+      <div class="tabbar">
+        <button class="tab on" id="tab-home" onclick="tab('home')"><span class="ti">🧭</span>今日</button>
+        <button class="tab" id="tab-review" onclick="tab('review')"><span class="ti">🗓️</span>复习</button>
+        <button class="tab" id="tab-me" onclick="tab('me')"><span class="ti">🦊</span>我的</button>
+      </div>
+    </div><!-- /app -->
+  </div><!-- /device -->
+</div>
+
+<!-- ============ SPEC: ROUTE ============ -->
+<div class="doc">
+<section>
+  <div class="kicker"><span class="ln"></span>学习路线 · The 5-stage word journey</div>
+  <h2>每个单词，都走完<br>这 5 个阶段</h2>
+  <p class="lead">这不是「看一眼、选个义、过」。每个词都是一次小探索，从「在语境里猜」一路推到「能用出来」，再交给算法长期守护。</p>
+
+  <div class="stageflow">
+    <div class="stg s1"><div class="sn">1</div><div class="sc"><h4>初遇 · 在语境里猜</h4><div class="en">Contextual encounter + active recall</div><p>AI 用你感兴趣的主题生成一句真实语境，先让你「猜」词义（不直接给答案），再揭晓：释义 + AI 配图 + 词源拆解 + Lexi 搭配提示。</p><span class="why2">好记：双重编码 · 词源精细加工 · 合意困难</span></div></div>
+    <div class="stg s2"><div class="sn">2</div><div class="sc"><h4>检验 · 主动回忆</h4><div class="en">Retrieval with interleaving</div><p>立刻用一道辨析题检验，并故意混入形近词 / 近义词（如 abandon vs abundant），训练「区分」而不是「眼熟」。</p><span class="why2">测验：检索练习 · 交错练习</span></div></div>
+    <div class="stg s3"><div class="sn">3</div><div class="sc"><h4>学以致用 · 你来产出</h4><div class="en">Productive output + AI feedback</div><p><strong>全流程的灵魂关。</strong>给你一个真实场景，你用这个词造句 / 表达，AI 即时点评：用对了夸你 + 给升级搭配；没用上 / 用错了，温和纠正并示范。</p><span class="why2">G1 产出转化 · G4 AI 即时纠错</span></div></div>
+    <div class="stg s4"><div class="sn">4</div><div class="sc"><h4>元认知 · 评掌握度</h4><div class="en">Three-tier mastery rating</div><p>AI 基于本关表现，给出「认得 / 会拼 / 会用」三层判定，你可微调。这一步让你<em class="mk">诚实地知道自己会到哪</em>，而不是自我感觉良好。</p><span class="why2">G5 元认知 · 三层掌握度</span></div></div>
+    <div class="stg s5"><div class="sn">5</div><div class="sc"><h4>入库 · 交给算法守护</h4><div class="en">FSRS adaptive scheduling</div><p>单词「收入词野」，FSRS 算法按你的真实表现预测遗忘点、排好下次复习；正反馈（能量 + Lexi 庆祝）即时到账。</p><span class="why2">间隔重复 FSRS · 即时正反馈</span></div></div>
+  </div>
+</section>
+
+<!-- ============ SPEC: REVIEW RULES ============ -->
+<section>
+  <div class="kicker"><span class="ln"></span>复习规则 · Review rules</div>
+  <h2>复习，不只是<br>「再背一遍」</h2>
+  <p class="lead">词野的复习有三条硬规则：<strong>分层、自适应、产出化</strong>。同一个词在不同掌握层，复习的方式和间隔都不同。</p>
+
+  <h3>规则一 · 三层掌握度，分别排程</h3>
+  <p>每个词拆成三层，<em class="mk">各自独立计算复习间隔</em>。你可能「认得」很久了，但「会用」才刚解锁——那就该多练用法，而不是反复认。</p>
+  <div class="tbl">
+    <div class="r h"><div>掌握层</div><div>复习考什么</div><div>达标信号</div></div>
+    <div class="r"><div class="lv l-rec">① 认得</div><div>看词选义 / 看义选词（识别）</div><div>快速、稳定答对</div></div>
+    <div class="r"><div class="lv l-sp">② 会拼</div><div>听音拼写 / 看义拼写</div><div>无提示拼对</div></div>
+    <div class="r"><div class="lv l-use">③ 会用</div><div><strong>造句 / 情景应用</strong>（产出式）</div><div>搭配正确、AI 通过</div></div>
+  </div>
+
+  <h3>规则二 · FSRS 自适应间隔</h3>
+  <p>不用「1-2-4-7 天」死板表。每次复习你给一个反馈（重来 / 模糊 / 认识 / 秒答），算法据此预测你的遗忘概率，<em class="mk">越熟，间隔拉得越长；一答错，间隔立刻收短</em>。</p>
+  <div class="pill3">
+    <span style="color:var(--d-orange)">重来 → 明天见</span>
+    <span style="color:#c08800">模糊 → ~2 天</span>
+    <span style="color:#b07d10">认识 → ~4 天</span>
+    <span style="color:var(--d-green)">秒答 → ~9 天 → 更长</span>
+  </div>
+
+  <h3>规则三 · 交错 + 错题强化</h3>
+  <p>复习时把形近词、近义词<strong>混排</strong>出题（交错练习），并对你「常错的那一类」定向加练。AI 会给你一张「最容易混的词」清单，复习时反复在临界点考你。</p>
+
+  <div class="callout">⏰ <b>唤醒，不靠恐吓。</b>到了复习临界点，词野推送的是「你的 8 个词快从词野跑掉啦，3 分钟逮回来」这样的<strong>成长叙事</strong>，而不是「你的连续记录就要断了！」的焦虑施压——这是保护内在动机的关键差别。</div>
+</section>
+
+<!-- ============ SPEC: THREE PILLARS ============ -->
+<section>
+  <div class="kicker"><span class="ln"></span>三大设计支柱 · Why it works</div>
+  <h2>AI 个性化 · 学以致用 · 内在动机</h2>
+
+  <h3>🤖 AI 个性化（回应 G4）</h3>
+  <p>同一个 abandon，<strong>球迷</strong>看到的是球场例句，<strong>动漫迷</strong>看到的是热血番例句——AI 按你在「我的」里选的兴趣实时生成语境与造句场景。它还会画你的<em class="mk">错误模式画像</em>（爱混形近词？时态总错？），把复习题精准打到你的薄弱点，并用对话式讲解陪你想明白。</p>
+
+  <h3>🚀 学以致用（回应 G1）</h3>
+  <p>主流 App 到「选对义」就结束了，词野的 STEP 3 才是重头：<strong>必须产出</strong>。造句、情景表达、口语跟读，AI 即时纠错并给「升级搭配」。把单词从「认得的死词」逼成「张口能用的活词」——这正是报告点名的最大空白。</p>
+
+  <h3>❤️ 内在动机（回应 G2 / SDT）</h3>
+  <p>用自我决定理论的三根支柱替代打卡焦虑：</p>
+  <div class="pill3">
+    <span><b>自主</b>：选主题、定节奏、自己的目标</span>
+    <span><b>胜任</b>：三层掌握 + 成长地图可见</span>
+    <span><b>归属</b>：AI 伙伴 Lexi + 合作小队</span>
+  </div>
+  <p style="margin-top:8px">叙事从「别断签」换成「把词逮回词野」。动机来自<em class="mk">看得见的成长和被陪伴的感觉</em>，而不是怕失去连续记录——所以考试结束后，用户还愿意回来。</p>
+</section>
+
+<!-- ============ SPEC: EXPECTED EFFECTS ============ -->
+<section>
+  <div class="kicker"><span class="ln"></span>预期效果 · Expected outcomes</div>
+  <h2>为什么这套路线<br>会更有效？</h2>
+  <p class="lead">每条机制都对应一个被验证的学习科学结论。下面是设计预期（理论推导，非实测承诺）。</p>
+  <div class="effect">
+    <div class="eff"><h4>主动词汇转化率 ↑</h4><p>强制「产出关 + AI 纠错」，把「认得」推向「会用」。预期<span class="num">主动产出能力</span>显著高于只做识别题的产品。</p></div>
+    <div class="eff"><h4>长期留存 ↑</h4><p>SDT 内在动机替代外部打卡，缓解「考完即流失」。预期<span class="num">90 天留存</span>优于依赖连续签到的模式。</p></div>
+    <div class="eff"><h4>单位时间记得更牢</h4><p>FSRS 在遗忘临界点复习 + 合意困难，减少无效重复。预期<span class="num">复习效率</span>优于固定间隔。</p></div>
+    <div class="eff"><h4>「虚假掌握」更少</h4><p>三层掌握度 + 延迟测验，揪出「以为会、其实没会」。预期<span class="num">自我评估准确度</span>更高。</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="logo">🦊 词野 · WordsCantRun</div>
+  <p style="margin-top:8px">一份面向初高中生的单词学习路线交互原型<br>设计依据：<a href="https://ethan-wang-china.github.io/english-vocab-memory-market-report/">《国内英语单词记忆市场分析报告》</a></p>
+  <p style="margin-top:10px;font-size:12px;color:var(--d-mut)">本页为交互原型与设计说明，非上架产品；数据 / 效果为设计预期与理论推导。AI 点评为原型内的演示逻辑。</p>
+</footer>
+</div>
+
+<script>
+var $ = function(s){return document.querySelector(s);};
+var energy = 240, doneCnt = 3;
+
+/* ---------- tabs / screens ---------- */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
+  $('#scr-'+id).classList.add('active');
+  $('.screens').scrollTop = 0;
+  $('#scr-'+id).scrollTop = 0;
+}
+function tab(id){
+  showScreen(id);
+  ['home','review','me'].forEach(function(t){
+    var el=$('#tab-'+t); if(el) el.classList.toggle('on', t===id);
+  });
+}
+
+/* ---------- learn flow ---------- */
+var step = 1;
+function startLearn(){
+  step = 1; renderStep(); resetLearn();
+  showScreen('learn');
+  ['home','review','me'].forEach(function(t){$('#tab-'+t).classList.remove('on');});
+}
+function resetLearn(){
+  $('#reveal1').classList.remove('show');
+  $('#reveal2').classList.remove('show');
+  $('#aifb').classList.remove('show');
+  document.querySelectorAll('#opts1 .opt,#opts2 .opt').forEach(function(o){o.classList.remove('right','wrong');});
+  $('#myinput').value='';
+}
+function renderStep(){
+  for(var i=1;i<=5;i++){var el=$('#step'+i); if(el) el.classList.toggle('active', i===step);}
+  document.querySelectorAll('#lprog i').forEach(function(b,idx){b.classList.toggle('on', idx<step);});
+  var lb=$('.lbody'); if(lb) lb.scrollTop=0; $('#scr-learn').scrollTop=0;
+}
+function nextStep(){ if(step<5){ step++; renderStep(); } }
+
+function guess(el, correct){
+  document.querySelectorAll('#opts1 .opt').forEach(function(o){o.style.pointerEvents='none';});
+  if(correct){ el.classList.add('right'); }
+  else{ el.classList.add('wrong'); el.classList.add('shake');
+        document.querySelectorAll('#opts1 .opt').forEach(function(o){if(o.querySelector('.lt').textContent==='B')o.classList.add('right');}); }
+  setTimeout(function(){ $('#reveal1').classList.add('show'); $('#reveal1').scrollIntoView({behavior:'smooth',block:'nearest'}); }, 420);
+}
+function recall(el, correct){
+  document.querySelectorAll('#opts2 .opt').forEach(function(o){o.style.pointerEvents='none';});
+  if(correct){ el.classList.add('right'); $('#recallfb').innerHTML='<b>漂亮！</b> abandon ≠ abundant（丰富的），它俩长得像、最容易混。已帮你把这组形近词标记，后面复习会再考你一次。'; }
+  else{ el.classList.add('wrong'); el.classList.add('shake');
+        document.querySelectorAll('#opts2 .opt').forEach(function(o){if(o.querySelector('.lt').textContent==='B')o.classList.add('right');});
+        $('#recallfb').innerHTML='<b>差一点～</b> 正确是 abandon。你选的和它是<b>形近词</b>，最容易混——别担心，我已把这组词加入你的「易混清单」，复习时重点帮你区分。'; }
+  setTimeout(function(){ $('#reveal2').classList.add('show'); $('#reveal2').scrollIntoView({behavior:'smooth',block:'nearest'}); }, 420);
+}
+
+/* scenarios for personalization */
+var scenes1 = [
+ {chip:'⚽ 已按你的兴趣「足球」生成语境', html:'The coach told his players never to <span class="blank">?</span> hope, even when they were losing three to nil.'},
+ {chip:'🎮 已按你的兴趣「游戏」生成语境', html:'The hero refused to <span class="blank">?</span> his teammates, even in the final boss fight.'},
+ {chip:'🎬 已按你的兴趣「影视」生成语境', html:'In the movie, she had to <span class="blank">?</span> her old life and start over in a new city.'}
+];
+var s1i=0;
+function swapScene(){
+  s1i=(s1i+1)%scenes1.length;
+  $('.intchip').innerHTML = scenes1[s1i].chip;
+  $('#ctx1').innerHTML = scenes1[s1i].html;
+  toast('🦊 已换成你感兴趣的场景');
+}
+var scenes3 = [
+ {lbl:'🎸 真实场景', html:'<span class="em">你最好的朋友想退出乐队。</span>用上 <b style="color:var(--lime)">abandon</b>，写一句话劝劝他 / 描述这件事 👇', ph:'试着写：Don\'t abandon ...'},
+ {lbl:'⚽ 真实场景', html:'<span class="em">球队 0:3 落后，队友想放弃。</span>用 <b style="color:var(--lime)">abandon</b> 写一句鼓励的话 👇', ph:'试着写：We won\'t abandon ...'},
+ {lbl:'🎮 真实场景', html:'<span class="em">开黑时队友想投降。</span>用 <b style="color:var(--lime)">abandon</b> 喊一句话稳住军心 👇', ph:'试着写：Don\'t abandon the game ...'}
+];
+var s3i=0;
+function swapScene3(){
+  s3i=(s3i+1)%scenes3.length;
+  var s=scenes3[s3i];
+  $('#scene3').innerHTML='<div class="lbl">'+s.lbl+'</div><div>'+s.html+'</div>';
+  $('#myinput').placeholder=s.ph;
+  toast('🦊 场景已切换');
+}
+function fillHint(){
+  $('#myinput').value='Don\'t abandon ';
+  $('#myinput').focus();
+  toast('💡 试着接上「the band / hope / the game」');
+}
+function checkSentence(){
+  var t = $('#myinput').value.trim();
+  var body = $('#aibody');
+  if(t.length<3){ toast('先写一句试试吧 ✍️'); return; }
+  var used = /abandon/i.test(t);
+  if(used){
+    body.innerHTML='<b>用对啦！👏</b><p>你把 abandon 放进了真实表达，这就是「会用」。读起来很自然。</p><div class="up">✦ 升级提示：试试搭抽象名词——abandon <b>hope / the plan / the idea</b>，会更地道。</div>';
+  }else{
+    body.innerHTML='<b>差一点～</b><p>这句还没用上 <b>abandon</b> 哦。学一个词的关键是把它「用出来」。</p><div class="up">✦ 照着改：<b>Don\'t abandon the band just yet!</b> 把 abandon 放进去再试一次 💪</div>';
+  }
+  $('#aifb').classList.add('show');
+  $('#aifb').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function toggleML(el){ el.classList.toggle('on'); }
+
+function finishLearn(){
+  energy += 15; doneCnt = Math.min(doneCnt+1, 12);
+  $('#homeEnergy').textContent = energy;
+  $('#homeDone').innerHTML = doneCnt + '<small>/12</small>';
+  burst();
+  toast('🦊 abandon 已收入词野！+15 ⚡');
+  /* mark trail node done */
+  var nodes=document.querySelectorAll('#scr-home .tnode');
+  if(nodes[3]){ nodes[3].classList.remove('now'); nodes[3].classList.add('done');
+    nodes[3].querySelector('.dot').textContent='✓';
+    nodes[3].querySelector('.tw span').textContent='会用 · 刚刚收入';
+    nodes[3].removeAttribute('onclick'); }
+  if(nodes[4]){ nodes[4].classList.add('now'); nodes[4].setAttribute('onclick','toast(\"🦊 demo 到此～ 这就是每个词的完整流程！\")');
+    nodes[4].querySelector('.tw span').textContent='👉 下一个 · 初遇新词'; }
+  setTimeout(function(){ tab('home'); }, 700);
+}
+
+/* ---------- review ---------- */
+function showRev(){ $('#revCard').classList.add('show'); $('#revCard').scrollIntoView({behavior:'smooth',block:'nearest'}); }
+function rev(el, msg){
+  el.parentNode.querySelectorAll('.rate').forEach(function(b){b.style.opacity=.4;});
+  el.style.opacity=1;
+  toast('🗓️ 已记录 · '+msg);
+}
+
+/* ---------- me ---------- */
+function pick(el){
+  el.classList.toggle('on');
+  toast('🦊 AI 将用所选主题生成你的例句');
+}
+function goalv(v){ $('#goalv').textContent = v + ' 词'; }
+
+/* ---------- why toggle ---------- */
+function toggleWhy(){
+  document.body.classList.toggle('show-why');
+  var on = document.body.classList.contains('show-why');
+  $('#whyBtn').innerHTML = on ? '✓ 原理' : '🔍 原理';
+  if(on) toast('已显示每个交互背后的科学依据');
+}
+
+/* ---------- toast + confetti ---------- */
+var tTimer;
+function toast(msg){
+  var t=$('#toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tTimer); tTimer=setTimeout(function(){t.classList.remove('show');},1900);
+}
+function burst(){
+  var colors=['#c2f04a','#ff7c3e','#ffd24a','#ff6b5b'];
+  var app=$('.app');
+  for(var i=0;i<18;i++){
+    (function(){
+      var s=document.createElement('div'); s.className='spark';
+      s.style.background=colors[i%4];
+      s.style.left=(40+Math.random()*20)+'%';
+      s.style.top='55%';
+      app.appendChild(s);
+      var dx=(Math.random()-.5)*260, dy=-(120+Math.random()*220), rot=Math.random()*720;
+      s.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+                 {transform:'translate('+dx+'px,'+dy+'px) rotate('+rot+'deg)',opacity:0}],
+                {duration:900+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)'});
+      setTimeout(function(){s.remove();},1400);
+    })();
+  }
+}
+</script>
+</body>
+</html>
